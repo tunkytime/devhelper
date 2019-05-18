@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "exampledb",
-    "host": "localhost",
+    "password": "deezdeez",
+    "database": "prestigeWW_db",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
