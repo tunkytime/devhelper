@@ -1,3 +1,22 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+.quote-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.quote-text {
+  position: absolute;
+  color: #fff;
+  text-align: center;
+  left: 0;
+  right: 0;
+  top: 30%;
+  letter-spacing: 3px;
+}
+
+.quote-bg {
+  margin: -21.875% 0;
+}

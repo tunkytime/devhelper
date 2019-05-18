@@ -1,0 +1,77 @@
+<div id="home">
+    <div class="quote-container">
+        <img class="img-responsive quote-bg" src="{{image}}" alt="header image" />
+        <div class="quote-text">
+            <h1>{{quote}}</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-6">
+                <div class="card mt-3 mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Sign In</h5>
+                        <div class="card-text">
+                            <form action="#">
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="username" class="form-control" id="usernameInput"
+                                        placeholder="Username">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" id="passwordInput"
+                                        placeholder="Password">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-6">
+                <div class="card mt-3 mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Create Account</h5>
+                        <div class="card-text">
+                            <form action="#">
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input id="username" type="text" class="form-control" placeholder="Enter Username"
+                                        name="username" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="psw"><b>Password</b></label>
+                                    <input id="password" type="password" class="form-control"
+                                        placeholder="Enter Password" name="psw" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="psw-repeat"><b>Repeat Password</b></label>
+                                    <input type="password" class="form-control" placeholder="Repeat Password"
+                                        name="psw-repeat" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>
+                                        <input type="checkbox" checked="checked" name="remember"
+                                            style="margin-bottom:15px">
+                                        Remember me
+                                    </label>
+                                </div>
+                                <button class="btn btn-danger cancelbtn">Cancel</button>
+                                <button type="submit" class="btn btn-primary signupbtn">Create Account</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>

@@ -1,9 +1,15 @@
 var db = require("../models");
-var axios = require('axios');
 
 module.exports = function (app) {
-  // Load index page
   app.get("/", function (req, res) {
+    res.render("home", {
+      quote: "This is a random quote",
+      image: "https://www.growthgurus.com/wp-content/uploads/2018/07/ico-websites-background-placeholder-image.jpg"
+    });
+  });
+
+  // Load index page
+  app.get("/examples", function (req, res) {
     db.Example.findAll({}).then(function (dbExamples) {
       res.render("index", {
         msg: "Welcome!",
