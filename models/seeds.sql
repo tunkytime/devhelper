@@ -1,8 +1,10 @@
+USE prestigeWW_db;
 INSERT INTO `users` (`username`, `password`) VALUES
-                   (NULL, 'SUPER ADMIN', 'admin', 'admin'),
-                   ( 'NORMAL', 'robin', 'robin'),
-                   ( 'ADMIN', 'taylor', 'taylor'),
-                   ( 'ADMIN', 'vivian', 'vivian'),
-                   ( 'NORMAL', 'harry', 'harry'),
-                   ( 'ADMIN', 'melinda', 'melinda'),
-                   ( 'NORMAL', 'harley', 'harley');
+                
+                   ( 'robin', 'robin'),
+                   ( 'taylor', 'taylor'),
+                   ( 'vivian', 'vivian'),
+                   ( 'harry', 'harry'),
+                   ( 'melinda', 'melinda'),
+                   ( 'tony', 'tony'),
+                   ( 'harley', 'harley');
