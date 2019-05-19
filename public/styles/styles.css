@@ -1,22 +1,56 @@
+html {
+    background-color: #2f2fa2;
+}
+
+body {
+    background: #2f2fa2;
+}
+
 .list-group-item {
-  line-height: 2.5;
+    line-height: 2.5;
 }
 
-.quote-container {
-  position: relative;
-  overflow: hidden;
+/* Home */
+.btn-signin {
+    border: 1px solid #f64c72;
+    color: #f64c72;
 }
 
-.quote-text {
-  position: absolute;
-  color: #fff;
-  text-align: center;
-  left: 0;
-  right: 0;
-  top: 30%;
-  letter-spacing: 3px;
+.btn-signin:hover {
+    border: 1px solid #fff;
+    color: #fff;
 }
 
-.quote-bg {
-  margin: -21.875% 0;
+.btn-signup {
+    background-color: #f64c72;
+    color: #fff;
+}
+
+.btn-signup:hover {
+    background-color: #f64c72;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+/* Sign In / Create Account */
+.btn-submit {
+    border: 1px solid #f64c72;
+    color: #f64c72;
+}
+
+.btn-submit:hover {
+    border-color: #2f2fa2;
+    color: #2f2fa2;
+    font-weight: bold;
+}
+
+.btn-cancel {
+    background-color: #f64c72;
+    color: #fff;
+}
+
+.btn-cancel:hover {
+    background-color: #2f2fa2;
+    border: 1px solid #fff;
+    color: #fff;
 }
