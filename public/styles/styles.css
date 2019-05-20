@@ -1,9 +1,14 @@
-html {
+body {
     background-color: #2f2fa2;
 }
 
-body {
-    background: #2f2fa2;
+.navbar-nav a {
+    color: #fff;
+}
+
+.navbar-nav a:hover {
+    color: #fff;
+    opacity: .8;
 }
 
 .list-group-item {
@@ -41,7 +46,6 @@ body {
 .btn-submit:hover {
     border-color: #2f2fa2;
     color: #2f2fa2;
-    font-weight: bold;
 }
 
 .btn-cancel {
