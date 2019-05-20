@@ -1,30 +1,34 @@
 {
-  "name": "node-handlebars-boilerplate",
+  "name": "userauth",
   "version": "1.0.0",
-  "description": "Project 2 Starter",
-  "main": "server.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "lint": "eslint --quiet .",
-    "fix": "eslint --fix .",
-    "test": "npm run lint && cross-env NODE_ENV=test mocha -u tdd --reporter spec --exit"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tunkytime/userAuth.git"
+  },
+  "author": "",
   "license": "ISC",
-  "dependencies": {
-    "dotenv": "^6.2.0",
-    "express": "^4.16.3",
-    "express-handlebars": "^3.0.0",
-    "mysql2": "^1.6.4",
-    "sequelize": "^4.41.2",
+  "bugs": {
+    "url": "https://github.com/tunkytime/userAuth/issues"
   },
-  "devDependencies": {
-    "chai": "^4.1.2",
-    "chai-http": "^4.0.0",
-    "cross-env": "^5.2.0",
-    "eslint": "^4.19.1",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.2",
-    "mocha": "^5.2.0",
-    "prettier": "^1.13.7"
+  "homepage": "https://github.com/tunkytime/userAuth#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.0.0",
+    "eslint": "^5.16.0",
+    "express": "^4.17.0",
+    "express-handlebars": "^3.1.0",
+    "express-session": "^1.16.1",
+    "mysql": "^2.17.1",
+    "mysql2": "^1.6.5",
+    "nodemon": "^1.19.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^5.8.6"
   }
 }
