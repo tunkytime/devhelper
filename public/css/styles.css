@@ -1,5 +1,5 @@
 body {
-    background-color: #2f2fa2;
+    background-color: #ccc;
     color: #fff;
 }
 
@@ -61,6 +61,14 @@ body {
 }
 
 /* Dashboard */
+.container-quote {
+    background-color: black;
+}
+
+.container-dashboard {
+    background-color: yellow;
+}
+
 .myGoals {
     background-color: #1e1e7c;
 }
