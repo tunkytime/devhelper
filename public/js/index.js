@@ -3,6 +3,7 @@ var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
+var $accompList = $("#accomp-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -27,6 +28,13 @@ var API = {
       url: "api/examples/" + id,
       type: "DELETE"
     });
+  },
+  moveGoal: function (id){
+    return $.ajax({
+      url: "api/examples/" + id,
+      type: "PUT",
+      //data: "completed"
+    });
   }
 };
 
@@ -36,7 +44,8 @@ var refreshExamples = function () {
     var $examples = data.map(function (example) {
       var $a = $("<a>")
         .text(example.text)
-        .attr("href", "/example/" + example.id);
+        .attr("href", "/example/" + example.id)
+        .attr("href", "/example/" + example.completed);
 
       var $li = $("<li>")
         .attr({
@@ -45,10 +54,11 @@ var refreshExamples = function () {
         })
         .append($a);
 
-      var $button = $("<button>")
+      var $button = [
+      $("<button>")
         .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
+        .text("Delete")
+      ];
       $li.append($button);
 
       return $li;
@@ -57,6 +67,8 @@ var refreshExamples = function () {
     $exampleList.empty();
     $exampleList.append($examples);
   });
+  console.log("example");
+  console.log(example);
 };
 
 // handleFormSubmit is called whenever we submit a new example
@@ -66,20 +78,21 @@ var handleFormSubmit = function (event) {
 
   var example = {
     text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+  //  description: $exampleDescription.val().trim()
+    completed: false
   };
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
+  // if (!(example.text && example.description)) {
+  //   alert("You must enter an example text and description!");
+  //   return;
+  // }
 
   API.saveExample(example).then(function () {
     refreshExamples();
   });
 
   $exampleText.val("");
-  $exampleDescription.val("");
+  //$exampleDescription.val("");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
@@ -94,6 +107,33 @@ var handleDeleteBtnClick = function () {
   });
 };
 
+// var handleMoveBtnClick = function(){
+//   var idToMove = $(this).
+//     parent()
+//     .attr("data-id");
+
+//     var accomplished = $(this).data("accomplished");
+//     var accomplishedState = {
+//       accomp: accomplished
+//     };
+//     console.log("move button pressed");
+//     API.moveGoal(idToMove).then(function(){
+//       refreshExamples();
+//     })
+
+    // $.ajax("/api/examples/" + id, {
+    //   type: "PUT",
+    //   data: accomplishedState
+    // }).then(
+    //   function() {
+    //     console.log("new Accomplishment", accomplished);
+    //     // Reload the page to get the updated list
+    //     location.reload();
+    //   }
+    // );
+//};
+
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+//$exampleList.on("click",".move", handleMoveBtnClick); 

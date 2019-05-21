@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "root",
+    "password": "B00tcamp",
     "database": "exampledb",
     "host": "localhost",
     "dialect": "mysql"

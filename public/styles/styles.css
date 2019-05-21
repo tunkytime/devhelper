@@ -1,3 +1,24 @@
 .list-group-item {
   line-height: 2.5;
 }
+#container{
+  width: 460px;
+  margin: 100px auto;
+  background: #f7f7f7;
+}
+/* .fa-plus{
+  float: right;
+} */
+h3{
+  background: #2980b9;
+  color: white;
+  margin: 0;
+  padding: 10px 20px;
+}
+li{
+  background: white;
+}
+
+li:nth-child(2n){
+  background: #f7f7f7;
+}

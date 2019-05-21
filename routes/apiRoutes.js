@@ -25,4 +25,11 @@ module.exports = function (app) {
       res.json(dbExample);
     });
   });
-};
+  // Update
+  // app.update("/api/examples/:id"), function(req, res) {
+  //   db.Example.update
+  //   console.log("It has been updated");
+  // }
+}; 
+
+//
