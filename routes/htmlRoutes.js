@@ -2,7 +2,7 @@ var db = require("../models");
 
 module.exports = function (app) {
     app.get("/", function (req, res) {
-        res.render("home", {
+        res.render("example", {
             quote: "This is a random quote",
             image: "https://www.growthgurus.com/wp-content/uploads/2018/07/ico-websites-background-placeholder-image.jpg"
         });
