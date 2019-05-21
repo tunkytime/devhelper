@@ -1,24 +1,60 @@
-.list-group-item {
-  line-height: 2.5;
-}
-#container{
-  width: 460px;
-  margin: 100px auto;
-  background: #f7f7f7;
-}
-/* .fa-plus{
-  float: right;
-} */
-h3{
-  background: #2980b9;
-  color: white;
-  margin: 0;
-  padding: 10px 20px;
-}
-li{
-  background: white;
+body {
+    background-color: #2f2fa2;
 }
 
-li:nth-child(2n){
-  background: #f7f7f7;
+.navbar-nav a {
+    color: #fff;
+}
+
+.navbar-nav a:hover {
+    color: #fff;
+    opacity: .8;
+}
+
+.list-group-item {
+    line-height: 2.5;
+}
+
+/* Home */
+.btn-signin {
+    border: 1px solid #f64c72;
+    color: #f64c72;
+}
+
+.btn-signin:hover {
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.btn-signup {
+    background-color: #f64c72;
+    color: #fff;
+}
+
+.btn-signup:hover {
+    background-color: #f64c72;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+/* Sign In / Create Account */
+.btn-submit {
+    border: 1px solid #f64c72;
+    color: #f64c72;
+}
+
+.btn-submit:hover {
+    border-color: #2f2fa2;
+    color: #2f2fa2;
+}
+
+.btn-cancel {
+    background-color: #f64c72;
+    color: #fff;
+}
+
+.btn-cancel:hover {
+    background-color: #2f2fa2;
+    border: 1px solid #fff;
+    color: #fff;
 }

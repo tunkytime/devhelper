@@ -1,32 +1,37 @@
 {
-  "name": "project2",
+  "name": "userauth",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "directories": {
-    "test": "test"
-  },
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tunkytime/project2.git"
+    "url": "git+https://github.com/tunkytime/userAuth.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tunkytime/project2/issues"
+    "url": "https://github.com/tunkytime/userAuth/issues"
   },
-  "homepage": "https://github.com/tunkytime/project2#readme",
+  "homepage": "https://github.com/tunkytime/userAuth#readme",
   "dependencies": {
-    "axios": "^0.18.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.0.0",
+    "eslint": "^5.16.0",
     "express": "^4.17.0",
     "express-handlebars": "^3.1.0",
-    "handlebars": "^4.1.2",
+    "express-session": "^1.16.1",
+    "mysql": "^2.17.1",
     "mysql2": "^1.6.5",
-    "request": "^2.88.0",
+    "nodemon": "^1.19.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "sequelize": "^5.8.6"
-  }
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "description": ""
 }
