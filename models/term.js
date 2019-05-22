@@ -1,7 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
-    var Term = sequelize.define("term", {
+    var Term = sequelize.define("Term", {
         term: DataTypes.STRING,
-        definition: DataTypes.TEXT
+        answer: DataTypes.TEXT
     });
     return Term;
 };

@@ -1,5 +1,5 @@
-module.exports = (sequelize, DataTypes) => {
-    var Question = sequelize.define('question', {
+module.exports = function (sequelize, DataTypes) {
+    var Question = sequelize.define("Question", {
         question: {
             type: DataTypes.STRING,
             notEmpty: true
@@ -10,4 +10,4 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
     return Question;
-}
+};

@@ -4,7 +4,6 @@ var express = require('express')
 var exphbs = require('express-handlebars')
 var session = require('express-session')
 var passport = require('passport')
-var axios = require("axios");
 
 var db = require("./models");
 
@@ -36,8 +35,8 @@ app.set('view engine', '.hbs');
 
 // Routes
 require('./routes/auth')(app, passport);
-require("./routes/htmlroutes")(app);
-require("./routes/apiroutes")(app);
+require("./routes/apiRoutes")(app);
+require("./routes/htmlRoutes")(app);
 require("./controllers/api");
 
 // Load passport strategies
