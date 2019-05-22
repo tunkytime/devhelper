@@ -1,0 +1,64 @@
+/* MAIN COLORS */
+/* 
+*/
+
+
+body {
+    background: #05386b;
+    color: #fff;
+}
+
+.navbar-nav a {
+    color: #fff;
+}
+
+.navbar-nav a:hover {
+    color: #fff;
+    opacity: .8;
+}
+
+.list-group-item {
+    line-height: 2.5;
+}
+
+/* Home */
+.btn-signin {}
+
+.btn-signin:hover {}
+
+.btn-signup {}
+
+.btn-signup:hover {}
+
+/* Sign In / Create Account */
+.btn-submit {}
+
+.btn-submit:hover {}
+
+.btn-cancel {}
+
+.btn-cancel:hover {}
+
+/* Dashboard */
+.container-dashboard {
+    background-color: #fff;
+    color: #222
+}
+
+#goals {
+    background-color: #05386b;
+    color: #fff;
+}
+
+.card.bg-info {
+    background-color: #5cd895 !important;
+}
+
+.btn {
+    background-color: #05386b;
+    color: #fff;
+}
+
+.hidden {
+    display: none;
+}
