@@ -1,4 +1,5 @@
 var db = require("../models");
+var callQuoteAPI = require("../controllers/api");
 
 module.exports = function (app) {
     app.get("/", function (req, res) {
@@ -9,9 +10,9 @@ module.exports = function (app) {
     });
 
     // Load example page
-    app.get("/dashboard", function (req, res) {
+    app.get("/example", function (req, res) {
         db.Example.findAll({}).then(function (dbExamples) {
-            res.render("dashboard", {
+            res.render("example", {
                 msg: "Welcome!",
                 examples: dbExamples
             });
@@ -19,13 +20,13 @@ module.exports = function (app) {
     });
 
     // Load example page and pass in an example by id
-    app.get("/dashboard/:id", function (req, res) {
+    app.get("/example/:id", function (req, res) {
         db.Example.findOne({
             where: {
                 id: req.params.id
             }
         }).then(function (dbExample) {
-            res.render("dashboard", {
+            res.render("example", {
                 example: dbExample
             });
         });

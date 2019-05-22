@@ -97,3 +97,12 @@ var handleDeleteBtnClick = function () {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+var queryURL = "https://api.adviceslip.com/advice";
+
+$.ajax({
+    url: queryURL,
+    method: "GET"
+}).then(function (res) {
+    console.log(res);
+});

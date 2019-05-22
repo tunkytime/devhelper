@@ -1,24 +1,13 @@
 {
-  "name": "userauth",
+  "name": "project2",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tunkytime/userAuth.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tunkytime/userAuth/issues"
-  },
-  "homepage": "https://github.com/tunkytime/userAuth#readme",
+  "main": "server.js",
   "dependencies": {
-    "bcrypt-nodejs": "0.0.3",
+    "axios": "^0.18.0",
+    "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.3.1",
     "dotenv": "^8.0.0",
     "eslint": "^5.16.0",
     "express": "^4.17.0",
@@ -29,6 +18,22 @@
     "nodemon": "^1.19.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "sequelize": "^5.8.6"
-  }
+    "sequelize": "^5.8.6",
+    "unirest": "^0.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tunkytime/project2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tunkytime/project2/issues"
+  },
+  "homepage": "https://github.com/tunkytime/project2#readme"
 }
