@@ -2,7 +2,7 @@
     "development": {
         "username": "root",
         "password": "B00tcamp",
-        "database": "exampledb",
+        "database": "life_db",
         "host": "localhost",
         "dialect": "mysql"
     },

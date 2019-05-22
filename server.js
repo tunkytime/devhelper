@@ -4,6 +4,7 @@ var express = require('express')
 var exphbs = require('express-handlebars')
 var session = require('express-session')
 var passport = require('passport')
+var api = require("./controllers/api")
 
 var db = require("./models");
 
@@ -37,7 +38,8 @@ app.set('view engine', '.hbs');
 require('./routes/auth')(app, passport);
 require("./routes/htmlroutes")(app);
 require("./routes/apiroutes")(app);
-
+require("./controllers/authController");
+require("./controllers/api");
 // Load passport strategies
 require("./config/passport/passport")(passport, db.user);
 
