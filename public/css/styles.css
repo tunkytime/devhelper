@@ -1,14 +1,10 @@
 /* MAIN COLORS */
-/*  #2C3531
-    #116466
-    #D9B08C
-    #FFCB9A
-    #D1E8E2 
+/* 
 */
 
 
 body {
-    background-color: #ccc;
+    background: #05386b;
     color: #fff;
 }
 
@@ -26,58 +22,43 @@ body {
 }
 
 /* Home */
-.btn-signin {
-    border: 1px solid #f64c72;
-    color: #f64c72;
-}
+.btn-signin {}
 
-.btn-signin:hover {
-    border: 1px solid #fff;
-    color: #fff;
-}
+.btn-signin:hover {}
 
-.btn-signup {
-    background-color: #f64c72;
-    color: #fff;
-}
+.btn-signup {}
 
-.btn-signup:hover {
-    background-color: #f64c72;
-    border: 1px solid #fff;
-    color: #fff;
-}
+.btn-signup:hover {}
 
 /* Sign In / Create Account */
-.btn-submit {
-    border: 1px solid #f64c72;
-    color: #f64c72;
-}
+.btn-submit {}
 
-.btn-submit:hover {
-    border-color: #2f2fa2;
-    color: #2f2fa2;
-}
+.btn-submit:hover {}
 
-.btn-cancel {
-    background-color: #f64c72;
-    color: #fff;
-}
+.btn-cancel {}
 
-.btn-cancel:hover {
-    background-color: #2f2fa2;
-    border: 1px solid #fff;
-    color: #fff;
-}
+.btn-cancel:hover {}
 
 /* Dashboard */
-.container-quote {
-    background-color: black;
-}
-
 .container-dashboard {
-    background-color: yellow;
+    background-color: #fff;
+    color: #222
 }
 
-.myGoals {
-    background-color: #1e1e7c;
+#goals {
+    background-color: #05386b;
+    color: #fff;
+}
+
+.card.bg-info {
+    background-color: #5cd895 !important;
+}
+
+.btn {
+    background-color: #05386b;
+    color: #fff;
+}
+
+.hidden {
+    display: none;
 }
