@@ -6,42 +6,42 @@ var $exampleList = $("#example-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-    saveExample: function (example) {
+    saveGoal: function (example) {
         return $.ajax({
             headers: {
                 "Content-Type": "application/json"
             },
             type: "POST",
-            url: "api/examples",
+            url: "api/goals",
             data: JSON.stringify(example)
         });
     },
-    getExamples: function () {
+    getGoals: function () {
         return $.ajax({
-            url: "api/examples",
+            url: "api/goals",
             type: "GET"
         });
     },
-    deleteExample: function (id) {
+    deleteGoal: function (id) {
         return $.ajax({
-            url: "api/examples/" + id,
+            url: "api/goals/" + id,
             type: "DELETE"
         });
     }
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function () {
-    API.getExamples().then(function (data) {
+var refreshGoals = function () {
+    API.getGoals().then(function (data) {
         var $examples = data.map(function (example) {
             var $a = $("<a>")
-                .text(example.text)
-                .attr("href", "/example/" + example.id);
+                .text(goal.title)
+                .attr("href", "/goal/" + goal.id);
 
             var $li = $("<li>")
                 .attr({
                     class: "list-group-item",
-                    "data-id": example.id
+                    "data-id": goal.id
                 })
                 .append($a);
 
@@ -64,18 +64,18 @@ var refreshExamples = function () {
 var handleFormSubmit = function (event) {
     event.preventDefault();
 
-    var example = {
-        text: $exampleText.val().trim(),
-        description: $exampleDescription.val().trim()
+    var goal = {
+        title: $exampleText.val().trim(),
+        body: $exampleDescription.val().trim()
     };
 
-    if (!(example.text && example.description)) {
+    if (!(goal.title && goal.body)) {
         alert("You must enter an example text and description!");
         return;
     }
 
-    API.saveExample(example).then(function () {
-        refreshExamples();
+    API.saveGoal(goal).then(function () {
+        refreshGoals();
     });
 
     $exampleText.val("");
@@ -89,8 +89,8 @@ var handleDeleteBtnClick = function () {
         .parent()
         .attr("data-id");
 
-    API.deleteExample(idToDelete).then(function () {
-        refreshExamples();
+    API.deleteGoal(idToDelete).then(function () {
+        refreshGoals();
     });
 };
 

@@ -3,16 +3,29 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "lint": "eslint --quiet .",
+    "fix": "eslint --fix .",
+    "test": "cross-env NODE_ENV=test mocha --recursive --reporter spec --exit"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
     "eslint": "^5.16.0",
     "express": "^4.17.0",
     "express-handlebars": "^3.1.0",
     "express-session": "^1.16.1",
+    "mocha": "^6.1.4",
     "mysql": "^2.17.1",
     "mysql2": "^1.6.5",
     "nodemon": "^1.19.0",
@@ -21,10 +34,12 @@
     "sequelize": "^5.8.6",
     "unirest": "^0.6.0"
   },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "cross-env": "^5.2.0",
+    "mocha": "^5.2.0",
+    "prettier": "^1.13.7"
   },
   "repository": {
     "type": "git",

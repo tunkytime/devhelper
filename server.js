@@ -39,7 +39,7 @@ require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 // Load passport strategies
-require("./config/passport/passport")(passport, db.user);
+require("./config/passport/passport")(passport, db.User);
 
 var syncOptions = {
     force: false
