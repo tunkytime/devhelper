@@ -62,3 +62,6 @@ body {
 .hidden {
     display: none;
 }
+h6{
+    margin-right: 60px;
+}

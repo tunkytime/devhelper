@@ -1,32 +1,11 @@
 {
   "name": "project2",
   "version": "1.0.0",
-<<<<<<< HEAD
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tunkytime/userAuth.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tunkytime/userAuth/issues"
-  },
-  "homepage": "https://github.com/tunkytime/userAuth#readme",
-  "dependencies": {
-    "axios": "^0.18.0",
-    "bcrypt-nodejs": "0.0.3",
-=======
   "description": "",
   "main": "server.js",
   "dependencies": {
     "axios": "^0.18.0",
     "bcrypt-nodejs": "^0.0.3",
->>>>>>> 08b055b726b9a890357df3b1df715356dff175da
     "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
     "dotenv": "^8.0.0",
@@ -39,14 +18,6 @@
     "nodemon": "^1.19.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-<<<<<<< HEAD
-    "request": "^2.88.0",
-    "sequelize": "^5.8.6"
-  },
-  "devDependencies": {},
-  "keywords": [],
-  "description": ""
-=======
     "sequelize": "^5.8.6",
     "unirest": "^0.6.0"
   },
@@ -65,5 +36,4 @@
     "url": "https://github.com/tunkytime/project2/issues"
   },
   "homepage": "https://github.com/tunkytime/project2#readme"
->>>>>>> 08b055b726b9a890357df3b1df715356dff175da
 }

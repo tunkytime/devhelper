@@ -7,6 +7,9 @@
 	var apiKeyJobs = "a5ce6768d167cf7224dd2182eb9b14d4";
 	var baseUrlJobs = "https://authenticjobs.com/api/?api_key=" + apiKeyJobs + "&method=aj.jobs.search&format=json&categories=3";
 
+	var apiKeyQuote = "eLaLSi9Uu337QxcUwX1_sAeF";
+	var quoteURL = "http://quotes.rest/quote/search.json?category=achieving-dreams&api_key=" + apiKeyQuote + "&maxlength=160";
+
 	$.ajax({
 	    url: baseUrlNews,
 	    type: "GET",
@@ -23,11 +26,13 @@
 	});
 
 	$.ajax({
-	    url: "http://quotes.rest/quote/random.json?api_key=eLaLSi9Uu337QxcUwX1_sAeF",
+	    url: quoteURL,
 	    type: "GET",
 	    success: function (res) {
 	        console.log(res);
-	        $("#quote").text(res.contents.quote);
+			$("#quote").text(res.contents.quote);
+			$("#author").text(res.contents.author);
+			$("#quote-main").text(res.contents.quote);
 	    },
 	    error: function (req, err) {
 	        console.log("Request: " + JSON.stringify(req));

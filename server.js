@@ -4,13 +4,12 @@ var express = require('express')
 var exphbs = require('express-handlebars')
 var session = require('express-session')
 var passport = require('passport')
-var api = require("./controllers/api")
 var axios = require("axios");
 
 var db = require("./models");
 
 var app = express()
-var PORT = process.env.PORT || 8000;
+var PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.urlencoded({
@@ -39,7 +38,7 @@ app.set('view engine', '.hbs');
 require('./routes/auth')(app, passport);
 require("./routes/htmlroutes")(app);
 require("./routes/apiroutes")(app);
-require("./controllers/api");
+require("./controllers/todoController")(app);
 
 // Load passport strategies
 require("./config/passport/passport")(passport, db.user);

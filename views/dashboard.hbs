@@ -28,6 +28,7 @@
     <div class="col-12 mb-3 mt-3">
         <h4 id="quote" class="text-center">
         </h4>
+        <h6 class="text-right">-<span id = "author"></span></h6>
     </div>
 </div>
 <div class="container shadow-lg p-3 mt-3 mb-3 rounded container-dashboard">
@@ -103,7 +104,17 @@
                 <div class="row text-center mb-5">
                     <div class="col">
                         <h5>Currently Learning</h5>
-                        <button class="btn">Item 1</button>
+                        <div id = "todo-table">
+                            <form>
+                                <input type = "text" name = "item" placeholder = "Add New Goal..."/>
+                                <button type = "submit">Add Goal</button>
+                            </form>
+                            <ul>
+                               
+                                    <li>{{todos}}</li>                                   
+                               
+                            </ul>
+                        </div>
                     </div>
                     <div class="col">
                         <span>Currently Building</span>

@@ -1,5 +1,5 @@
 var db = require("../models");
-var callQuoteAPI = require("../controllers/api");
+// var callQuoteAPI = require("../controllers/todoController");
 
 module.exports = function (app) {
     app.get("/", function (req, res) {
@@ -12,10 +12,12 @@ module.exports = function (app) {
     // Load example page
     app.get("/example", function (req, res) {
         db.Example.findAll({}).then(function (dbExamples) {
-            res.render("example", {
-                msg: "Welcome!",
-                examples: dbExamples
-            });
+            res.render("example"
+            // , {
+            //     msg: "Welcome!",
+            //     examples: dbExamples
+            // }
+            );
         });
     });
 
