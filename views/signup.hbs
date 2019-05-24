@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card mt-5 mx-auto text-dark" style="width: 25rem;">
+            <div class="card-body">
+                <h5 class="card-title">Create Account</h5>
+                <div class="card-text">
+
+                    <form id="signup" name="signup" method="post" action="/signup">
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input class="text form-control" name="email" type="email" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="firstname">First Name</label>
+                            <input class="form-control" name="firstname" type="text" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastname">Last Name</label>
+                            <input class="form-control" name="lastname" type="text" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input class="form-control" name="password" type="password" required />
+                        </div>
+
+                        <input class="btn btn-submit" type="submit" value="Create Account" />
+                        <a href="/" class="btn btn-cancel">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,15 +1,38 @@
 {
-  "name": "node-handlebars-boilerplate",
+  "name": "project2",
   "version": "1.0.0",
-  "description": "Project 2 Starter",
+  "description": "",
   "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "lint": "eslint --quiet .",
-    "fix": "eslint --fix .",
-    "test": "npm run lint && cross-env NODE_ENV=test mocha -u tdd --reporter spec --exit"
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcrypt-nodejs": "^0.0.3",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.3.1",
+    "dotenv": "^8.0.0",
+    "eslint": "^5.16.0",
+    "express": "^4.17.0",
+    "express-handlebars": "^3.1.0",
+    "express-session": "^1.16.1",
+    "mysql": "^2.17.1",
+    "mysql2": "^1.6.5",
+    "nodemon": "^1.19.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^5.8.6",
+    "unirest": "^0.6.0"
   },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tunkytime/project2.git"
+  },
+  "author": "",
   "license": "ISC",
+<<<<<<< HEAD
   "dependencies": {
     "axios": "^0.18.0",
     "dotenv": "^6.2.0",
@@ -28,4 +51,10 @@
     "mocha": "^5.2.0",
     "prettier": "^1.13.7"
   }
+=======
+  "bugs": {
+    "url": "https://github.com/tunkytime/project2/issues"
+  },
+  "homepage": "https://github.com/tunkytime/project2#readme"
+>>>>>>> 08b055b726b9a890357df3b1df715356dff175da
 }
