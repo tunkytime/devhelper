@@ -23,6 +23,16 @@ module.exports = function (app) {
         });
     });
 
+    // db.Example.bulkCreate([{
+    //         text: "First Example",
+    //         description: "First Description"
+    //     },
+    //     {
+    //         text: "Second Example",
+    //         description: "Second Description"
+    //     }
+    // ])
+
     // Delete an example by id
     app.delete("/api/examples/:id", function (req, res) {
         db.Example.destroy({

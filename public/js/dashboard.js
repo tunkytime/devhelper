@@ -97,13 +97,12 @@
 		var author = articles[index].author;
 		var date = articles[index].publishedAt;
 		var url = articles[index].url;
-		var content = articles[index].content;
-		content = `${content.substring(0, content.length - 13)}`;
+		var description = articles[index].description;
 		$("#title").text(title);
 		$("#author").text(author);
 		$("#date").text(date);
 		$("#url").attr("href", url);
-		$("#content").text(content);
+		$("#content").text(description);
 	};
 
 	function getJobs() {
