@@ -87,7 +87,6 @@ module.exports = (passport, user) => {
                         message: "Invalid password"
                     });
                 }
-                var userId = user.get("id");
                 var userInfo = user.get();
                 return done(null, userInfo);
             }).catch((err) => {

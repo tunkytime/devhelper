@@ -1,29 +1,25 @@
 <body class="dashboard-page">
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
-        <a class="navbar-brand" href="#">&ltDevHelper/&gt</a>
+        <span class="navbar-brand">&ltDevHelper/&gt</span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="form-inline my-2 my-lg-0 ml-auto">
-                <a href="/logout" class="btn btn-outline-success my-2 my-sm-0">Logout</a>
+            <form class="text-right my-2 my-lg-0 ml-auto">
+                <span class="currentUser text-white mr-2">Welcome, {{username.firstname}}</span>
+                <a href="/logout" class="btn btn-outline bg-transparent my-2 my-sm-0">Logout</a>
             </form>
         </div>
     </nav>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-10 mx-auto mt-3 text-center">
-                <div class="container-quote">
-                    <h3>Quote of the Day</h3>
-                    <p id="quote"></p>
-                    - <span id="authorQuote"></span> -
-                </div>
-            </div>
+    <div class="row container-quote">
+        <div class="col-10 mx-auto mt-3 mb-3 text-center">
+            <h3>Quote of the Day</h3>
+            <p id="quote"></p>
+            - <span id="authorQuote"></span> -
         </div>
-        <hr>
     </div>
     <div class="container shadow-lg p-3 mt-3 mb-3 rounded container-dashboard">
         <div class="row">
@@ -68,20 +64,40 @@
                         </div>
                     </div>
                 </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card bg-info">
+                            <div class="card-header text-white">
+                                Career Opportunities</div>
+                            <div class="card-body">
+                                <h5 id="careers" class="card-title"></h5>
+                                <button id="getJobs" class="btn mb-2">All</button>
+                                <button class="btn mb-2">Front-End</button>
+                                <button class="btn mb-2">Back-End</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-12 col-md-8 mt-3 container-article">
                 <h3 class="text-left" id="title"></h3>
-                <p>
-                    <span id="author"></span>
-                    <span id="date"></span>
-                </p>
+                <div class="row">
+                    <div class="col pt-3">
+                        <span id="author"></span>
+                        <span id="date"></span>
+                    </div>
+                    <div class="col text-right mb-2">
+                        <button class="btn" id="prevArt"><i class="fas fa-angle-left"
+                                style="font-size: 26px"></i></button>
+                        <button class="btn" id="nextArt"><i class="fas fa-angle-right"
+                                style="font-size: 26px"></i></button>
+                    </div>
+                </div>
                 <div class="container-image">
                     <img id="articleImg" class="rounded" style="object-fit: cover">
                 </div>
                 <p id="content" class="mt-2"></p>
                 <a href="#" id="url" target="_blank" class="btn">Read Full Article</a>
-                <button class="btn" id="nextArt">Next Article</button>
-                <button class="btn" id="prevArt">Previous</button>
             </div>
         </div>
 
@@ -106,7 +122,6 @@
                 </div>
             </div>
         </div>
-        <button id="getJobs" class="btn btn-block">Get Jobs</button>
     </div>
 
     <div id="jobs"></div>
