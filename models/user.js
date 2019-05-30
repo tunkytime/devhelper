@@ -14,21 +14,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             notEmpty: true
         },
-
         lastname: {
             type: DataTypes.STRING,
             notEmpty: true
         }
     });
-
-    // User.associate = models => {
-    //     models.User.hasMany(models.Goal, {
-    //         onDelete: "CASCADE",
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     });
-    // };
-
     return User;
 };

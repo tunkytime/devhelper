@@ -1,132 +1,119 @@
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<body class="dashboard-page">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+        <a class="navbar-brand" href="#">&ltDevHelper/&gt</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Dashboard<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#goals">Goals</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#getJobs">Jobs</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <a href="/logout" class="btn btn-outline-success my-2 my-sm-0">Logout</a>
-        </form>
-    </div>
-</nav>
-
-<div class="container">
-    <div class="row">
-        <div class="col-12 mb-3 mt-3">
-            <h4 id="quote" class="text-center">
-            </h4>
-            <h6 class="text-right">-<span id="author"></span></h6>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="form-inline my-2 my-lg-0 ml-auto">
+                <a href="/logout" class="btn btn-outline-success my-2 my-sm-0">Logout</a>
+            </form>
         </div>
-    </div>
-</div>
-<div class="container shadow-lg p-3 mt-3 mb-3 rounded container-dashboard">
-    <div class="row">
-        <div class="col-12 col-md-4">
-            <div class="row">
-                <div class="col">
-                    <div class="card text-white bg-info dailyTerm mt-3">
-                        <div class="card-header">
-                            Term of the Day
-                        </div>
-                        <div class="card-body">
-                            <h5 id="term" class="card-title">Content Management System (CMS)</h5>
-                            <button class="btn btn" type="button" data-toggle="collapse" data-target="#termDefine"
-                                aria-expanded="false" aria-controls="termDefine">
-                                Definition
-                            </button>
-                            <div class="collapse" id="termDefine">
-                                <div class="card card-body">
-                                    definition goes here
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-12">
-                    <div class="card text-white bg-info intQ">
-                        <div class="card-header">
-                            Interview Practice </div>
-                        <div class="card-body">
-                            <h5 id="question" class="card-title">Can you explain the order of importance of CSS rules?
-                            </h5>
-                            <button class="btn" type="button" data-toggle="collapse" data-target="#intAnswer"
-                                aria-expanded="false" aria-controls="intAnswer">
-                                Sample Answer
-                            </button>
-                            <div class="collapse" id="intAnswer">
-                                <div class="card card-body">
-                                    answer goes here
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-10 mx-auto mt-3 text-center">
+                <div class="container-quote">
+                    <h3>Quote of the Day</h3>
+                    <p id="quote"></p>
+                    - <span id="authorQuote"></span> -
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-8 mt-3">
-            <h3 class="text-center" id="title">Android Q adds shiny new APIs while blocking others</h3>
-            <p><span id="author">By Ryan Daws</span> | <span id="date">March 14, 2019</span></p>
-            <p id="content">What's being added or changed is always more exciting than what's being taken away, so it's
-                where we'll start.
-
-                We know Google is taking AI seriously and is building it into most of its own products, this API
-                helps developers in doing the same.
-
-                The API was first released in 2017 but in Android Q it's being updated with performance improvements and
-                support for 60
-                new operations including ARGMAX, ARGMIN, and quantised LSTM.
-
-                Primarily, it will help apps function more...</p>
-            <a href="#" id="url" target="_blank" class="btn">Read Full Article</a>
-            <button class="btn" id="nextArt">Next Article</button>
-            <button class="btn" id="prevArt">Previous</button>
-        </div>
-    </div>
-
-    <div id="goals" class="rounded">
         <hr>
-        <div class="row mt-3 mb-3">
-            <div class="col-12">
-                <h4 class="text-center">My Goals</h4>
-                <hr style="border-color: white">
-                <div class="row text-center mb-5">
+    </div>
+    <div class="container shadow-lg p-3 mt-3 mb-3 rounded container-dashboard">
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="row">
                     <div class="col">
-                        <h5>Currently Learning</h5>
-                        <button class="btn">Item 1</button>
+                        <div class="card bg-info dailyTerm mt-3">
+                            <div class="card-header text-white">
+                                Term of the Day
+                            </div>
+                            <div class="card-body">
+                                <h5 id="term" class="card-title"></h5>
+                                <button class="btn mb-2" type="button" data-toggle="collapse" data-target="#termDefine"
+                                    aria-expanded="false" aria-controls="termDefine">
+                                    Definition
+                                </button>
+                                <div class="collapse" id="termDefine">
+                                    <div class="card card-body">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col">
-                        <span>Currently Building</span>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card bg-info intQ">
+                            <div class="card-header text-white">
+                                Interview Practice </div>
+                            <div class="card-body">
+                                <h5 id="intQuestion" class="card-title"></h5>
+                                <button class="btn mb-2" type="button" data-toggle="collapse" data-target="#intAnswer"
+                                    aria-expanded="false" aria-controls="intAnswer">
+                                    Sample Answer
+                                </button>
+
+                                <div class="collapse" id="intAnswer">
+                                    <div class="card card-body">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col">
-                        <span>What's Next?</span>
+                </div>
+            </div>
+            <div class="col-12 col-md-8 mt-3 container-article">
+                <h3 class="text-left" id="title"></h3>
+                <p>
+                    <span id="author"></span>
+                    <span id="date"></span>
+                </p>
+                <div class="container-image">
+                    <img id="articleImg" class="rounded" style="object-fit: cover">
+                </div>
+                <p id="content" class="mt-2"></p>
+                <a href="#" id="url" target="_blank" class="btn">Read Full Article</a>
+                <button class="btn" id="nextArt">Next Article</button>
+                <button class="btn" id="prevArt">Previous</button>
+            </div>
+        </div>
+
+        <div id="goals" class="rounded">
+            <hr>
+            <div class="row mt-3 mb-3">
+                <div class="col-12">
+                    <h4 class="text-center">My Goals</h4>
+                    <hr style="border-color: white">
+                    <div class="row text-center mb-5">
+                        <div class="col">
+                            <h5>Currently Learning</h5>
+                            <button class="btn">Item 1</button>
+                        </div>
+                        <div class="col">
+                            <span>Currently Building</span>
+                        </div>
+                        <div class="col">
+                            <span>What's Next?</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <button id="getJobs" class="btn btn-block">Get Jobs</button>
     </div>
-    <button id="getJobs" class="btn btn-block">Get Jobs</button>
-    {{task}}
-</div>
 
-<div id="jobs"></div>
+    <div id="jobs"></div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/js/dashboard.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script type="text/javascript" src="/js/dashboard.js"></script>
+</body>

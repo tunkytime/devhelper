@@ -10,23 +10,23 @@ module.exports = function (app) {
         db.Goal.findAll({}).then(function (dbGoals) {
             res.render("goal", {
                 msg: "Welcome!",
-                examples: dbGoals
+                goals: dbGoals
             });
         });
     });
 
     // Load example page and pass in an example by id
-    // app.get("/goal/:id", function (req, res) {
-    //     db.Goal.findOne({
-    //         where: {
-    //             id: req.params.id
-    //         }
-    //     }).then(function (dbGoals) {
-    //         res.render("goal", {
-    //             example: dbGoals
-    //         });
-    //     });
-    // });
+    app.get("/goal/:id", function (req, res) {
+        db.Goal.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbGoals) {
+            res.render("goal", {
+                goal: dbGoals
+            });
+        });
+    });
 
     // Render 404 page for any unmatched routes
     app.get("*", function (req, res) {

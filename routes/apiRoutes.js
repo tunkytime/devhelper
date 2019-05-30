@@ -18,7 +18,7 @@ module.exports = function (app) {
 
     // Create a new example
     app.post("/api/goals", function (req, res) {
-        db.Example.create(req.body).then(function (dbGoal) {
+        db.Goal.create(req.body).then(function (dbGoal) {
             res.json(dbGoal);
         });
     });
@@ -28,16 +28,6 @@ module.exports = function (app) {
             res.json(dbGoal);
         });
     });
-
-    // db.Example.bulkCreate([{
-    //         text: "First Example",
-    //         description: "First Description"
-    //     },
-    //     {
-    //         text: "Second Example",
-    //         description: "Second Description"
-    //     }
-    // ])
 
     // Delete an example by id
     app.delete("/api/goals/:id", function (req, res) {

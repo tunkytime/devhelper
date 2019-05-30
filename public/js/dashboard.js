@@ -35,7 +35,7 @@
 		success: function (res) {
 			console.log(res);
 			$("#quote").text(res.contents.quote);
-			$("#author").text(res.contents.author);
+			$("#authorQuote").text(res.contents.author);
 		},
 		error: function (req, err) {
 			console.log("Request: " + JSON.stringify(req));
@@ -46,8 +46,11 @@
 		url: "/api/questions",
 		type: "GET",
 		success: function (res) {
-			console.log(res);
-			$("#question").text(res[randomIndex(res)].question);
+			var currentQuestion = res[randomIndex(res)];
+			var term = currentQuestion.question;
+			var answer = currentQuestion.answer;
+			$("#intQuestion").text(term);
+			$("#intAnswer").text(answer);
 		},
 		error: function (req, err) {
 			console.log("Request: " + JSON.stringify(req));
@@ -58,8 +61,11 @@
 		url: "/api/terms",
 		type: "GET",
 		success: function (res) {
-			console.log(res);
-			$("#term").text(res[randomIndex(res)].term);
+			var currentTerm = res[randomIndex(res)];
+			var term = currentTerm.term;
+			var answer = currentTerm.answer;
+			$("#term").text(term);
+			$("#termDefine").text(answer);
 		},
 		error: function (req, err) {
 			console.log("Request: " + JSON.stringify(req));
@@ -94,16 +100,34 @@
 	});
 
 	function getArticles(index) {
-		var title = articles[index].title;
-		var author = articles[index].author;
 		var date = articles[index].publishedAt;
-		var url = articles[index].url;
-		var description = articles[index].description;
-		$("#title").text(title);
-		$("#author").text(author);
-		$("#date").text(date);
-		$("#url").attr("href", url);
-		$("#content").text(description);
+		var d = new Date(date);
+		var month = d.getUTCMonth() + 1;
+		var day = d.getUTCDate();
+		var year = d.getUTCFullYear();
+		date = `${month}/${day}/${year}`
+
+
+
+		var article = {
+			title: articles[index].title,
+			author: articles[index].author,
+			date: date,
+			url: articles[index].url,
+			image: articles[index].urlToImage,
+			description: articles[index].description
+		}
+
+		displayInfo(article);
+	};
+
+	function displayInfo(article) {
+		$("#title").text(article.title);
+		$("#author").text(article.author);
+		$("#date").text(` | ${article.date}`);
+		$("#url").attr("href", article.url);
+		$("#articleImg").attr("src", article.image);
+		$("#content").text(article.description);
 	};
 
 	function getJobs() {
@@ -124,6 +148,6 @@
 		});
 
 		function setHeader(xhr) {
-			xhr.setRequestHeader('Authorization', apiKey2);
+			xhr.setRequestHeader('Authorization', apiKeyJobs);
 		};
 	};
