@@ -9,7 +9,9 @@ exports.signin = (req, res) => {
 };
 
 exports.dashboard = (req, res) => {
-    res.render("dashboard");
+    res.render("dashboard", {
+        task: "Task 1"
+    });
 };
 
 exports.logout = (req, res) => {

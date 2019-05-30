@@ -1,13 +1,9 @@
-module.exports = (sequelize, DataTypes) => {
-    var Question = sequelize.define('question', {
-        question: {
-            type: DataTypes.STRING,
-            notEmpty: true
-        },
-        answer: {
-            type: DataTypes.STRING,
-            notEmpty: true
-        }
+module.exports = function (sequelize, DataTypes) {
+    var Question = sequelize.define("Question", {
+        question: DataTypes.STRING,
+        answer: DataTypes.TEXT
+    }, {
+        timestamps: false
     });
     return Question;
-}
+};

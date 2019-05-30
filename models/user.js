@@ -1,33 +1,23 @@
-module.exports = (sequelize, Sequelize) => {
-    var User = sequelize.define('user', {
-        firstname: {
-            type: Sequelize.STRING,
-            notEmpty: true
-        },
-        lastname: {
-            type: Sequelize.STRING,
-            notEmpty: true
-        },
-        username: {
-            type: Sequelize.TEXT
-        },
+module.exports = function (sequelize, DataTypes) {
+    var User = sequelize.define('User', {
         email: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             validate: {
                 isEmail: true
             }
         },
         password: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
-        last_login: {
-            type: Sequelize.DATE
+        firstname: {
+            type: DataTypes.STRING,
+            notEmpty: true
         },
-        status: {
-            type: Sequelize.ENUM('active', 'inactive'),
-            defaultValue: 'active'
+        lastname: {
+            type: DataTypes.STRING,
+            notEmpty: true
         }
     });
     return User;
-}
+};
