@@ -114,16 +114,23 @@
             </div>
         </div>
 
-        <div id="goals" class="rounded">
-            <hr>
+        <div id="goals">
             <div class="row mt-3 mb-3">
                 <div class="col-12">
                     <h4 class="text-center">My Goals</h4>
-                    <hr style="border-color: white">
                     <div class="row text-center mb-5">
                         <div class="col">
                             <h5>Currently Learning</h5>
-                            <button class="btn">Item 1</button>
+                            <ul class="list-group todo-list">
+                                <li class="list-group-item new-item">
+                                    <form id="todo-form">
+                                        <input class="new-item form-control" placeholder="Add a todo" type="text" />
+                                        <button type="submit" class="btn btn-success">Add Todo</button>
+                                    </form>
+                                </li>
+                                <span class="todo-container text-dark">
+                                </span>
+                            </ul>
                         </div>
                         <div class="col">
                             <span>Currently Building</span>
