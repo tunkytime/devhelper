@@ -1,6 +1,8 @@
+
 	var apiKeyNews = "9d7028e6fd84446a83379f5c12519956";
 	var apiKeyJobs = "a5ce6768d167cf7224dd2182eb9b14d4";
-	var apiKeyQuotes = "eLaLSi9Uu337QxcUwX1_sAeF";
+	var apiKeyQuotes = "eLaLSi9Uu337QxcUwX1_sAeF";	
+
 	var baseUrlNews = "https://newsapi.org/v2/everything?q=technology&pageSize=100&apiKey=" + apiKeyNews;
 	var baseUrlJobs = "https://authenticjobs.com/api/?api_key=" + apiKeyJobs + "&method=aj.jobs.search&format=json&categories=3";
 	var baseUrlQuotes = "http://quotes.rest/quote/search.json?category=achieving-dreams&api_key=" + apiKeyQuotes + "&maxlength=160";
@@ -140,6 +142,7 @@
 	};
 
 	$("#save-article").on("click", function () {
+
 		var savedArticle = {
 			url: articleURL,
 			title: articleTitle,
@@ -194,3 +197,6 @@
 			xhr.setRequestHeader('Authorization', apiKeyJobs);
 		};
 	};
+
+	
+   
