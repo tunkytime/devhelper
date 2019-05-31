@@ -26,31 +26,31 @@
         </div>
     </nav>
 
-    <div class="jumbotron container-quote">
+    <div class="jumbotron jumbotron-fluid jumbotron-dashboard container-quote">
         <div class="text-center">
-            <h2>Quote of the Day <i class="fas fa-comment"></i></h2>
-            <p id="quote"></p>
-            <p id="authorQuote"></p>
+            <h2><i class="fas fa-comment"></i> Quote of the Day</h2>
+            <blockquote class="blockquote" id="quote"></blockquote>
+            <footer class="blockquote-footer text-white" id="authorQuote"></footer>
         </div>
     </div>
     <div class="container shadow-lg p-3 mt-3 mb-3 rounded container-dashboard">
         <div class="row">
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-lg-4 col-md-6">
                 <div class="row">
                     <div class="col">
                         <div class="card bg-info dailyTerm mt-3">
                             <div class="card-header text-white">
-                                Term of the Day
+                                Knowledge Check
                             </div>
                             <div class="card-body">
                                 <h5 id="term" class="card-title"></h5>
-                                <button class="btn mb-2 mr-2" type="button" data-toggle="collapse"
-                                    data-target="#termDefine" aria-expanded="false" aria-controls="termDefine">
+                                <button class="btn mr-2" type="button" data-toggle="collapse" data-target="#termDefine"
+                                    aria-expanded="false" aria-controls="termDefine">
                                     Definition
                                 </button>
-                                <button id="nextTerm" class="btn mb-2">Next Term <i
+                                <button id="nextTerm" class="btn">Next Term <i
                                         class="fas fa-chevron-right"></i></button>
-                                <div class="collapse" id="termDefine">
+                                <div class="collapse mt-2" id="termDefine">
                                     <div class="card card-body">
                                     </div>
                                 </div>
@@ -65,12 +65,13 @@
                                 Interview Practice </div>
                             <div class="card-body">
                                 <h5 id="intQuestion" class="card-title"></h5>
-                                <button class="btn mb-2" type="button" data-toggle="collapse" data-target="#intAnswer"
+                                <button class="btn mr-2" type="button" data-toggle="collapse" data-target="#intAnswer"
                                     aria-expanded="false" aria-controls="intAnswer">
                                     Sample Answer
                                 </button>
-
-                                <div class="collapse" id="intAnswer">
+                                <button id="nextQuestion" class="btn">Next Question <i
+                                        class="fas fa-chevron-right"></i></button>
+                                <div class="collapse mt-2" id="intAnswer">
                                     <div class="card card-body">
                                     </div>
                                 </div>
@@ -80,14 +81,15 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-12">
-                        <div class="card bg-info">
-                            <div class="card-header text-white">
-                                Career Opportunities</div>
-                            <div class="card-body">
-                                <h5 id="careers" class="card-title"></h5>
-                                <button id="getJobs" class="btn mb-2">All</button>
-                                <button class="btn mb-2">Front-End</button>
-                                <button class="btn mb-2">Back-End</button>
+                        <div class="card rounded bg-transparent text-white">
+                            <img class="card-img" src="../images/card-career.jpg" alt="Card image">
+                            <div class="card-img-overlay text-center">
+                                <h5 class="card-title">Career Opportunities</h5>
+                                <div class="buttons text-center">
+                                    <button id="getJobs" class="btn mr-1 ml-1">All</button>
+                                    <button class="btn mr-1 ml-1">Front-End</button>
+                                    <button class="btn mr-1 ml-1">Back-End</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -116,10 +118,12 @@
             </div>
         </div>
 
+        <hr style="border-color: white">
+
         <div id="goals" class="rounded">
             <div class="row mt-3 mb-2">
                 <div class="col-12">
-                    <div class="row text-center mb-3 mt-3">
+                    <div class="row text-center mt-3">
                         <div class="col-12 col-lg-4 col-md-6">
                             <h5>Currently Learning <i class="fas fa-graduation-cap"></i></h5>
                             <ul class="list-group goal-list ml-3 mr-3 mb-3">
@@ -128,10 +132,9 @@
                                         <div class="row">
                                             <div class="col">
                                                 <input class="new-item form-control float-left"
-                                                    placeholder="Add new topic" type="text" style="width: 50%" />
+                                                    placeholder="Add new topic" type="text" style="width: 75%" />
                                                 <button type="submit" class="btn btn-goal float-right pr-3 pl-3"
-                                                    style="width: auto">Add
-                                                    Topic</button>
+                                                    style="width: auto"><i class="fas fa-plus"></i></button>
                                             </div>
                                         </div>
                                     </form>
@@ -148,10 +151,9 @@
                                     <div class="row">
                                         <div class="col">
                                             <input class="new-item-build form-control float-left"
-                                                placeholder="Add new project" type="text" style="width: 50%" />
+                                                placeholder="Add new project" type="text" style="width: 75%" />
                                             <button type="submit" class="btn btn-goal float-right pr-3 pl-3"
-                                                style="width: auto">Add
-                                                Project</button>
+                                                style="width: auto"><i class="fas fa-plus"></i></button>
                                         </div>
                                     </div>
                                 </form>

@@ -19,6 +19,13 @@ hr {
 #save-article {
     background: -webkit-linear-gradient(-45deg, rgba(254, 99, 80, 1) 0%, rgba(246, 76, 112, 1) 100%);
     color: #fff;
+    border: 2px solid #F64C70;
+}
+
+#save-article:hover {
+    background: #fff;
+    border: 2px solid #F64C70;
+    color: #F64C70;
 }
 
 .btn-goal {
@@ -93,7 +100,6 @@ hr {
 
 .navbar-nav a:hover {
     color: #fff;
-    opacity: .8;
 }
 
 .list-group-item {
@@ -105,7 +111,7 @@ hr {
     color: #222;
 }
 
-.jumbotron {
+.jumbotron-dashboard {
     background: -webkit-linear-gradient(135deg, rgba(254, 99, 80, 1) 0%, rgba(246, 76, 112, 1) 100%);
     color: #FFF;
     font-size: 1.4em;
@@ -138,7 +144,7 @@ hr {
 
 .container-image>img {
     width: 100%;
-    height: 400px;
+    height: 350px;
 }
 
 #goals {
@@ -199,8 +205,39 @@ hr {
     color: #F64C70;
 }
 
-#nextTerm {
+#nextTerm,
+#nextQuestion {
     background: none;
     border: 2px solid #F64C70;
     color: #F64C70;
+}
+
+.card-img-overlay .buttons {
+    width: 100%;
+    margin: 40% 0;
+    top: -10%;
+    position: relative;
+    z-index: 1;
+}
+
+.card-img-overlay .buttons .btn {
+    background: none;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.card-img-overlay .buttons .btn:hover {
+    background: none;
+    color: #F64C70;
+    border: 2px solid #F64C70;
+}
+
+.card-img-overlay .card-title {
+    top: 30%;
+    font-size: 1.7rem;
+    position: relative;
+}
+
+.card .card-img {
+    opacity: .9;
 }

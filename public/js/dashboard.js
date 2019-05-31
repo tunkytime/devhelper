@@ -6,7 +6,11 @@
 	var baseUrlQuotes = "http://quotes.rest/quote/search.json?category=achieving-dreams&api_key=" + apiKeyQuotes + "&maxlength=160";
 
 	var articles = [];
+	var terms = [];
+	var questions = [];
 	var articleNum = 0;
+	var termNum = 0;
+	var questionNum = 0;
 	var articleTitle;
 	var articleURL;
 	var articleImage;
@@ -39,7 +43,6 @@
 			url: baseUrlQuotes,
 			type: "GET",
 			success: function (res) {
-				console.log(res);
 				$("#quote").text(res.contents.quote);
 				$("#authorQuote").text(res.contents.author);
 			},
@@ -52,11 +55,10 @@
 			url: "/api/questions",
 			type: "GET",
 			success: function (res) {
-				var currentQuestion = res[randomIndex(res)];
-				var term = currentQuestion.question;
-				var answer = currentQuestion.answer;
-				$("#intQuestion").text(term);
-				$("#intAnswer").text(answer);
+				for (var i = 0; i < res.length; i++) {
+					questions.push(res[i]);
+				};
+				getQuestion(questionNum);
 			},
 			error: function (req, err) {
 				console.log("Request: " + JSON.stringify(req));
@@ -67,11 +69,10 @@
 			url: "/api/terms",
 			type: "GET",
 			success: function (res) {
-				var currentTerm = res[randomIndex(res)];
-				var term = currentTerm.term;
-				var answer = currentTerm.answer;
-				$("#term").text(term);
-				$("#termDefine").text(answer);
+				for (var i = 0; i < res.length; i++) {
+					terms.push(res[i]);
+				};
+				getTerm(termNum);
 			},
 			error: function (req, err) {
 				console.log("Request: " + JSON.stringify(req));
@@ -79,7 +80,21 @@
 		});
 
 		$("#nextTerm").on("click", function () {
+			if (termNum === (terms.length - 1)) {
+				termNum = 0;
+			} else {
+				termNum++;
+			}
+			getTerm(termNum);
+		});
 
+		$("#nextQuestion").on("click", function () {
+			if (questionNum === (questions.length - 1)) {
+				questionNum = 0;
+			} else {
+				questionNum++;
+			}
+			getQuestion(questionNum);
 		});
 
 		$("#nextArt").on("click", function () {
@@ -110,7 +125,6 @@
 		});
 
 		function getArticles(index) {
-			console.log(articleNum)
 			var date = articles[index].publishedAt;
 			var d = new Date(date);
 			var month = d.getUTCMonth() + 1;
@@ -134,6 +148,22 @@
 
 			displayInfo(article);
 		};
+
+		function getTerm(index) {
+			var currentTerm = terms[index];
+			var term = currentTerm.term;
+			var answer = currentTerm.answer;
+			$("#term").text(term);
+			$("#termDefine").text(answer);
+		}
+
+		function getQuestion(index) {
+			var currentQuestion = questions[index];
+			var term = currentQuestion.question;
+			var answer = currentQuestion.answer;
+			$("#intQuestion").text(term);
+			$("#intAnswer").text(answer);
+		}
 
 		function displayInfo(article) {
 			$("#title").text(article.title);
@@ -161,7 +191,6 @@
 				data: savedArticle,
 				success: function (data) {
 					console.log("Article saved");
-					console.log(savedArticle);
 				}
 			});
 		});

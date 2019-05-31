@@ -28,14 +28,20 @@
         </div>
     </nav>
 
-    <div class="container">
-        <h2 class="text-white mb-3">Saved Articles<span id="test"></span></h2>
+    <div class="jumbotron jumbotron-fluid jumbotron-dashboard">
+        <div class="container mt-5">
+            <h1 class="text-white text-center"><i class="fas fa-newspaper"></i> Saved Articles<span id="test"></span>
+            </h1>
+        </div>
+    </div>
+
+    <div class="container mt-3">
         <div class="row">
             {{#each articles}}
             <div class="col-12 col-md-4">
                 <div>
-                    <div class="card mb-3" style="height: 21rem;">
-                        <img src={{this.image}} class="card-img-top">
+                    <div class="card mb-3">
+                        <img src={{this.image}} class=" card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">{{this.title}}</h5>
                             <a href="{{url}}" id="read-full" target="_blank" class="btn">Read Article</a>
