@@ -5,5 +5,12 @@ module.exports = function (sequelize, DataTypes) {
     }, {
         timestamps: false
     });
+    // Goal.associate = function (models) {
+    //     Goal.belongsTo(models.User, {
+    //         foreignkey: {
+    //             allowNull: false
+    //         }
+    //     });
+    // };
     return Goal;
 };
