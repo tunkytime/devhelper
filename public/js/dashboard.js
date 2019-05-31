@@ -78,6 +78,10 @@
 			}
 		});
 
+		$("#nextTerm").on("click", function () {
+
+		});
+
 		$("#nextArt").on("click", function () {
 			if (articleNum === (articles.length - 1)) {
 				articleNum = 0;
@@ -162,7 +166,7 @@
 			});
 		});
 
-		$("#delete-article").on("click", function () {
+		$(document).on("click", "#delete-article", function () {
 			var id = $(this).data("id");
 			// Send the DELETE request.
 			$.ajax("/articles/" + id, {

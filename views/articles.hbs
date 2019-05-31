@@ -10,7 +10,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item">
@@ -27,21 +27,25 @@
             </form>
         </div>
     </nav>
-    <div class="container shadow-lg p-3 mt-3 mb-3 rounded container-dashboard">
+
+    <div class="container">
+        <h2 class="text-white mb-3">Saved Articles<span id="test"></span></h2>
         <div class="row">
-            <div class="col-12 col-md-12">
-                <h1>Saved Articles!<span id="test"></span></h1>
-                <ol>
-                    {{#each articles}}
-                    <li>
-                        <img src={{this.image}}>
-                        <a href="{{url}}">{{this.title}}</a>
-                        <a href="#" id="delete-article" data-id={{this.id}}>Delete</a>
-                        <hr>
-                    </li>
-                    {{/each}}
-                </ol>
+            {{#each articles}}
+            <div class="col-12 col-md-4">
+                <div>
+                    <div class="card mb-3" style="height: 21rem;">
+                        <img src={{this.image}} class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{this.title}}</h5>
+                            <a href="{{url}}" id="read-full" target="_blank" class="btn">Read Article</a>
+                            <button id="delete-article" class="bg-transparent btn btn-custom-outline"
+                                data-id="{{this.id}}">Delete</button>
+                        </div>
+                    </div>
+                </div>
             </div>
+            {{/each}}
         </div>
     </div>
     <script type="text/javascript" src="/js/dashboard.js"></script>

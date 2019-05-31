@@ -26,10 +26,10 @@ module.exports = (app, passport) => {
                 userId: req.user.id
             }
         }).then(function (dbarticles) {
-            var articleobj = {
-                articles: dbarticles
-            }
-            res.render("articles", articleobj);
+            res.render("articles", {
+                articles: dbarticles,
+                username: req.user
+            });
             console.log("All articles have been retrieved");
             console.log(dbarticles);
         });

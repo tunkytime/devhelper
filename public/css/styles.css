@@ -61,6 +61,11 @@ hr {
     color: #F64C70;
 }
 
+.articles-page .btn-outline {
+    border: 2px solid #F64C70;
+    color: #F64C70;
+}
+
 .dashboard-page .btn-outline:hover {
     border: 2px solid #fff;
     color: #fff;
@@ -180,10 +185,22 @@ hr {
     color: #FFF;
 }
 
-img {
-    height: 100px;
+#read-full {
+    background: #2026b3;
+    color: #fff;
 }
 
-#delete-article {
-    color: red;
+#read-full:hover {
+    background: -webkit-linear-gradient(-135deg, rgba(254, 99, 80, 1) 0%, rgba(246, 76, 112, 1) 100%);
+}
+
+#delete-article:hover {
+    border: 2px solid #F64C70;
+    color: #F64C70;
+}
+
+#nextTerm {
+    background: none;
+    border: 2px solid #F64C70;
+    color: #F64C70;
 }
