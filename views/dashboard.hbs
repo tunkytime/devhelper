@@ -26,11 +26,11 @@
         </div>
     </nav>
 
-    <div class="row container-quote">
-        <div class="col-10 mx-auto mt-3 mb-3 text-center">
-            <h3>Quote of the Day</h3>
+    <div class="jumbotron container-quote">
+        <div class="text-center">
+            <h2>Quote of the Day <i class="fas fa-comment"></i></h2>
             <p id="quote"></p>
-            - <span id="authorQuote"></span> -
+            <p id="authorQuote"></p>
         </div>
     </div>
     <div class="container shadow-lg p-3 mt-3 mb-3 rounded container-dashboard">
@@ -99,9 +99,9 @@
                         <span id="date"></span>
                     </div>
                     <div class="col text-right mb-2">
-                        <button class="btn" id="prevArt"><i class="fas fa-angle-left"
+                        <button class="btn pt-2" id="prevArt"><i class="fas fa-angle-left"
                                 style="font-size: 26px"></i></button>
-                        <button class="btn" id="nextArt"><i class="fas fa-angle-right"
+                        <button class="btn pt-2" id="nextArt"><i class="fas fa-angle-right"
                                 style="font-size: 26px"></i></button>
                     </div>
                 </div>
@@ -110,33 +110,56 @@
                 </div>
                 <p id="content" class="mt-2"></p>
                 <a href="#" id="url" target="_blank" class="btn">Read Full Article</a>
-                <button class="btn" id="save-article"><a href="/articles"></a> Save Article</button>
+                <button class="btn" id="save-article"><a href="/articles"></a>Save Article</button>
             </div>
         </div>
 
-        <div id="goals">
+        <div id="goals" class="rounded">
             <div class="row mt-3 mb-3">
                 <div class="col-12">
-                    <h4 class="text-center">My Goals</h4>
-                    <div class="row text-center mb-5">
-                        <div class="col">
-                            <h5>Currently Learning</h5>
-                            <ul class="list-group todo-list">
-                                <li class="list-group-item new-item">
-                                    <form id="todo-form">
-                                        <input class="new-item form-control" placeholder="Add a todo" type="text" />
-                                        <button type="submit" class="btn btn-success">Add Todo</button>
+                    <div class="row text-center mb-3 mt-3">
+                        <div class="col-12 col-lg-4 col-md-6">
+                            <h5>Currently Learning <i class="fas fa-graduation-cap"></i></h5>
+                            <ul class="list-group goal-list ml-3 mr-3 mb-3">
+                                <li class="bg-transparent shadow-none border-0 list-group-item new-item">
+                                    <form id="goal-form">
+                                        <div class="row">
+                                            <div class="col">
+                                                <input class="new-item form-control float-left"
+                                                    placeholder="Add new topic" type="text" style="width: 50%" />
+                                                <button type="submit" class="btn btn-goal float-right pr-3 pl-3"
+                                                    style="width: auto">Add
+                                                    Topic</button>
+                                            </div>
+                                        </div>
                                     </form>
                                 </li>
-                                <span class="todo-container text-dark">
+                                <span class="goal-container text-dark">
                                 </span>
                             </ul>
                         </div>
-                        <div class="col">
-                            <span>Currently Building</span>
+                        <div class="col-12 col-md-4 col-sm-6">
+                            <h5>Currently Building <i class="fas fa-tools"></i></h5 <ul
+                                class="list-group build-list ml-3 mr-3 mb-3">
+                            <li class="bg-transparent shadow-none border-0 list-group-item new-item">
+                                <form id="build-form">
+                                    <div class="row">
+                                        <div class="col">
+                                            <input class="new-item-build form-control float-left"
+                                                placeholder="Add new project" type="text" style="width: 50%" />
+                                            <button type="submit" class="btn btn-goal float-right pr-3 pl-3"
+                                                style="width: auto">Add
+                                                Project</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </li>
+                            <span class="build-container text-dark">
+                            </span>
+                            </ul>
                         </div>
-                        <div class="col">
-                            <span>What's Next?</span>
+                        <div class="col-12 col-md-4">
+                            <h5>Next Steps <i class="fas fa-question"></i></h5>
                         </div>
                     </div>
                 </div>

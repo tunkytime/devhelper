@@ -45,6 +45,76 @@ module.exports = (app, passport) => {
         });
     });
 
+    app.post("/api/goals", function (req, res) {
+        db.Goal.create(req.body).then(function (dbGoal) {
+            res.json(dbGoal);
+        });
+    });
+
+    app.put("/api/goals", function (req, res) {
+        db.Goal.update({
+                text: req.body.text,
+                complete: req.body.complete
+            }, {
+                where: {
+                    id: req.body.id
+                }
+            })
+            .then(function (dbGoal) {
+                res.json(dbGoal);
+            });
+    });
+
+    app.delete("/api/goals/:id", function (req, res) {
+        db.Goal.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbGoal) {
+            res.json(dbGoal);
+        });
+    });
+
+    app.get("/api/builds", isLoggedIn, function (req, res) {
+        db.Build.findAll({
+            where: {
+                UserId: req.user.id
+            }
+        }).then(function (dbBuild) {
+            res.json(dbBuild);
+        });
+    });
+
+    app.post("/api/builds", function (req, res) {
+        db.Build.create(req.body).then(function (dbBuild) {
+            res.json(dbBuild);
+        });
+    });
+
+    app.put("/api/builds", function (req, res) {
+        db.Build.update({
+                text: req.body.text,
+                complete: req.body.complete
+            }, {
+                where: {
+                    id: req.body.id
+                }
+            })
+            .then(function (dbBuild) {
+                res.json(dbBuild);
+            });
+    });
+
+    app.delete("/api/builds/:id", function (req, res) {
+        db.Build.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbBuild) {
+            res.json(dbBuild);
+        });
+    });
+
     app.post("/articles", isLoggedIn, function (req, res) {
         db.Article.create(req.body).then(function (dbarticles) {
             console.log("Saved Article:");

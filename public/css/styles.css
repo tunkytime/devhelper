@@ -16,6 +16,28 @@ hr {
     color: #fff;
 }
 
+#save-article {
+    background: -webkit-linear-gradient(-45deg, rgba(254, 99, 80, 1) 0%, rgba(246, 76, 112, 1) 100%);
+    color: #fff;
+}
+
+.btn-goal {
+    background-color: #2026B3;
+    border: none;
+    color: #fff;
+}
+
+.btn-custom-outline {
+    border: 2px solid #2026B3;
+    color: #2026B3;
+}
+
+.btn-custom-fill {
+    background-color: #2026B3;
+    border: none;
+    color: #fff;
+}
+
 .signin-page {
     background-color: #2026B3;
 }
@@ -78,25 +100,31 @@ hr {
     color: #222;
 }
 
-.container-quote {
+.jumbotron {
     background: -webkit-linear-gradient(135deg, rgba(254, 99, 80, 1) 0%, rgba(246, 76, 112, 1) 100%);
-    font-style: italic;
     color: #FFF;
+    font-size: 1.4em;
+    font-style: italic;
+    border-radius: 0;
+    height: 195px;
+    margin: 0;
+    padding-top: 2%;
+    padding-bottom: 2.5%;
+}
+
+.jumbotron h2 {
+    font-style: normal;
+}
+
+#quote,
+#authorQuote {
+    font-size: .9em;
 }
 
 .currentUser {
     border-bottom: 2px solid #F64C70;
 }
 
-#quote {
-    font-size: 1em;
-    opacity: .9;
-}
-
-#authorQuote {
-    font-size: 1em;
-    opacity: .9;
-}
 
 #date {
     font-style: italic;
@@ -105,11 +133,11 @@ hr {
 
 .container-image>img {
     width: 100%;
-    height: 300px;
+    height: 400px;
 }
 
 #goals {
-    background-color: #05386b;
+    background: -webkit-linear-gradient(-45deg, rgba(254, 99, 80, 1) 0%, rgba(246, 76, 112, 1) 100%);
     color: #fff;
 }
 
