@@ -88,6 +88,7 @@ module.exports = (passport, user) => {
                     });
                 }
                 var userInfo = user.get();
+                // console.log(userInfo)
                 return done(null, userInfo);
             }).catch((err) => {
                 console.log("Error:", err);

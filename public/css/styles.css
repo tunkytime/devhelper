@@ -65,3 +65,11 @@ body {
 h6{
     margin-right: 60px;
 }
+
+img{
+    width: 100px;
+    height: 100px;
+}
+#delete-article{
+    color: red;
+}

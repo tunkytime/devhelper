@@ -3,6 +3,9 @@
 
 	var articles = [];
 	var articleNum = 0;
+	var articleTitle;
+	var articleURL;
+	var articleImage;
 
 	var apiKeyJobs = "a5ce6768d167cf7224dd2182eb9b14d4";
 	var baseUrlJobs = "https://authenticjobs.com/api/?api_key=" + apiKeyJobs + "&method=aj.jobs.search&format=json&categories=3";
@@ -29,10 +32,9 @@
 	    url: quoteURL,
 	    type: "GET",
 	    success: function (res) {
-	        console.log(res);
+	        
 			$("#quote").text(res.contents.quote);
 			$("#author").text(res.contents.author);
-			$("#quote-main").text(res.contents.quote);
 	    },
 	    error: function (req, err) {
 	        console.log("Request: " + JSON.stringify(req));
@@ -71,7 +73,14 @@
 	    var author = articles[index].author;
 	    var date = articles[index].publishedAt;
 	    var url = articles[index].url;
-	    var content = articles[index].content;
+		var content = articles[index].content;
+		var image = articles[index].urlToImage;
+		
+		//Used for Saved Articles
+		articleTitle = title;
+		articleURL = url;
+		articleImage = image;
+
 	    content = `${content.substring(0, content.length - 13)}`;
 	    $("#title").text(title);
 	    $("#author").text(author);
@@ -101,3 +110,53 @@
 	        xhr.setRequestHeader('Authorization', apiKey2);
 	    };
 	};
+
+
+	$("#articles").on("click", function() {
+		
+		$.ajax("/articles", {
+            type: "GET",
+			data: articles,
+            success: function(data){	
+				console.log("Articles button has been pressed")
+			}
+		});	
+		
+	});
+
+	$("#save-article").on("click", function () {
+		
+		var savedArticle = {
+			url: articleURL,
+			title: articleTitle,
+			image: articleImage,
+
+		};
+		$.ajax("/articles", {
+            type: "POST",
+			data: savedArticle,
+            success: function(data){
+				console.log("Article saved");  
+				console.log(savedArticle);
+			}
+		});	
+	});
+
+	$("#delete-article").on("click", function () {
+		console.log("Delete button has been pressed");
+		var id = $(this).data("id");
+		
+		console.log(id);
+		// Send the DELETE request.
+		$.ajax("/articles/" + id, {
+		  type: "DELETE"
+		}).then(
+		  function() {
+			console.log("Article Deleted", id);
+			// Reload the page to get the updated list
+			location.reload();
+		  }
+		);
+	  });
+
+

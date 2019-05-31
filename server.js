@@ -38,7 +38,6 @@ app.set('view engine', '.hbs');
 require('./routes/auth')(app, passport);
 require("./routes/htmlroutes")(app);
 require("./routes/apiroutes")(app);
-require("./controllers/todoController")(app);
 
 // Load passport strategies
 require("./config/passport/passport")(passport, db.user);

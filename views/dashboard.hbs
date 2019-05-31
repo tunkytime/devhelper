@@ -10,10 +10,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Dashboard<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/dashboard">Dashboard<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#goals">Goals</a>
+                <a class="nav-link" id = "articles" href="/articles">Saved Articles</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#getJobs">Jobs</a>
@@ -24,6 +24,7 @@
         </form>
     </div>
 </nav>
+{{user.id}}
 <div class="row container-quote">
     <div class="col-12 mb-3 mt-3">
         <h4 id="quote" class="text-center">
@@ -93,6 +94,7 @@
             <a href="#" id="url" target="_blank" class="btn">Read Full Article</a>
             <button class="btn" id="getNext">Next Article</button>
             <button class="btn" id="previous">Previous</button>
+            <button class="btn" id="save-article"><a href="/articles"></a> Save Article</button>
         </div>
     </div>
     <div id="goals" class="rounded">
@@ -109,10 +111,8 @@
                                 <input type = "text" name = "item" placeholder = "Add New Goal..."/>
                                 <button type = "submit">Add Goal</button>
                             </form>
-                            <ul>
-                               
-                                    <li>{{todos}}</li>                                   
-                               
+                            <ul> 
+                                {{{todos}}}                                  
                             </ul>
                         </div>
                     </div>

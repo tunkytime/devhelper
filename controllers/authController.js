@@ -9,12 +9,15 @@ exports.signin = (req, res) => {
 };
 
 exports.dashboard = (req, res) => {
-    res.render("dashboard");
-    task: "Task 1"
+    res.render("dashboard", {user: req.user});
 };
 
 exports.logout = (req, res) => {
     req.session.destroy((err) => {
         res.redirect("/");
     });
+};
+
+exports.articles = (req, res) => {
+    res.render("articles");
 };
