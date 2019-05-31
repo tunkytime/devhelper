@@ -35,6 +35,16 @@ module.exports = (app, passport) => {
         });
     });
 
+    app.get("/api/goals", isLoggedIn, function (req, res) {
+        db.Goal.findAll({
+            where: {
+                UserId: req.user.id
+            }
+        }).then(function (dbGoal) {
+            res.json(dbGoal);
+        });
+    });
+
     app.post("/articles", isLoggedIn, function (req, res) {
         db.Article.create(req.body).then(function (dbarticles) {
             console.log("Saved Article:");
