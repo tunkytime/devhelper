@@ -7,6 +7,9 @@
 
 	var articles = [];
 	var articleNum = 0;
+	var articleTitle;
+	var articleURL;
+	var articleImage;
 	var index;
 
 	function randomIndex(array) {
@@ -107,8 +110,6 @@
 		var year = d.getUTCFullYear();
 		date = `${month}/${day}/${year}`
 
-
-
 		var article = {
 			title: articles[index].title,
 			author: articles[index].author,
@@ -117,6 +118,11 @@
 			image: articles[index].urlToImage,
 			description: articles[index].description
 		}
+
+		//Used for Saved Articles
+		articleTitle = article.title;
+		articleURL = article.url;
+		articleImage = article.image;
 
 		displayInfo(article);
 	};
@@ -129,6 +135,40 @@
 		$("#articleImg").attr("src", article.image);
 		$("#content").text(article.description);
 	};
+
+	$("#save-article").on("click", function () {
+		var savedArticle = {
+			url: articleURL,
+			title: articleTitle,
+			image: articleImage,
+			UserId: $(".currentUser").data("id")
+		};
+
+		$.ajax("/articles", {
+			type: "POST",
+			data: savedArticle,
+			success: function (data) {
+				console.log("Article saved");
+				console.log(savedArticle);
+			}
+		});
+	});
+
+	$("#delete-article").on("click", function () {
+		console.log("Delete button has been pressed");
+		var id = $(this).data("id");
+		console.log(id);
+		// Send the DELETE request.
+		$.ajax("/articles/" + id, {
+			type: "DELETE"
+		}).then(
+			function () {
+				console.log("Article Deleted", id);
+				// Reload the page to get the updated list
+				location.reload();
+			}
+		);
+	});
 
 	function getJobs() {
 		$.ajax({
