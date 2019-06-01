@@ -1,17 +1,20 @@
 	var apiKeyNews = "9d7028e6fd84446a83379f5c12519956";
 	var apiKeyJobs = "a5ce6768d167cf7224dd2182eb9b14d4";
 	var apiKeyQuotes = "eLaLSi9Uu337QxcUwX1_sAeF";
-	var baseUrlNews = "https://newsapi.org/v2/everything?q=technology&pageSize=100&apiKey=" + apiKeyNews;
+	var baseUrlNews = "https://newsapi.org/v2/top-headlines?q=technology&pageSize=100&apiKey=" + apiKeyNews;
 	var baseUrlJobs = "https://authenticjobs.com/api/?api_key=" + apiKeyJobs + "&method=aj.jobs.search&format=json&categories=3";
 	var baseUrlQuotes = "http://quotes.rest/quote/search.json?category=achieving-dreams&api_key=" + apiKeyQuotes + "&maxlength=160";
 
 	var articles = [];
+	var terms = [];
+	var questions = [];
 	var articleNum = 0;
+	var termNum = 0;
+	var questionNum = 0;
 	var articleTitle;
 	var articleURL;
 	var articleImage;
 	var index;
-
 	var userId = $(".currentUser").data("id");
 
 	$(document).ready(function () {
@@ -40,7 +43,6 @@
 			url: baseUrlQuotes,
 			type: "GET",
 			success: function (res) {
-				console.log(res);
 				$("#quote").text(res.contents.quote);
 				$("#authorQuote").text(res.contents.author);
 			},
@@ -53,11 +55,10 @@
 			url: "/api/questions",
 			type: "GET",
 			success: function (res) {
-				var currentQuestion = res[randomIndex(res)];
-				var term = currentQuestion.question;
-				var answer = currentQuestion.answer;
-				$("#intQuestion").text(term);
-				$("#intAnswer").text(answer);
+				for (var i = 0; i < res.length; i++) {
+					questions.push(res[i]);
+				};
+				getQuestion(questionNum);
 			},
 			error: function (req, err) {
 				console.log("Request: " + JSON.stringify(req));
@@ -68,19 +69,36 @@
 			url: "/api/terms",
 			type: "GET",
 			success: function (res) {
-				var currentTerm = res[randomIndex(res)];
-				var term = currentTerm.term;
-				var answer = currentTerm.answer;
-				$("#term").text(term);
-				$("#termDefine").text(answer);
+				for (var i = 0; i < res.length; i++) {
+					terms.push(res[i]);
+				};
+				getTerm(termNum);
 			},
 			error: function (req, err) {
 				console.log("Request: " + JSON.stringify(req));
 			}
 		});
 
+		$("#nextTerm").on("click", function () {
+			if (termNum === (terms.length - 1)) {
+				termNum = 0;
+			} else {
+				termNum++;
+			}
+			getTerm(termNum);
+		});
+
+		$("#nextQuestion").on("click", function () {
+			if (questionNum === (questions.length - 1)) {
+				questionNum = 0;
+			} else {
+				questionNum++;
+			}
+			getQuestion(questionNum);
+		});
+
 		$("#nextArt").on("click", function () {
-			if (articleNum === articles.length) {
+			if (articleNum === (articles.length - 1)) {
 				articleNum = 0;
 			} else {
 				articleNum++;
@@ -131,10 +149,30 @@
 			displayInfo(article);
 		};
 
+		function getTerm(index) {
+			var currentTerm = terms[index];
+			var term = currentTerm.term;
+			var answer = currentTerm.answer;
+			$("#term").text(term);
+			$("#termDefine").text(answer);
+		}
+
+		function getQuestion(index) {
+			var currentQuestion = questions[index];
+			var term = currentQuestion.question;
+			var answer = currentQuestion.answer;
+			$("#intQuestion").text(term);
+			$("#intAnswer").text(answer);
+		}
+
 		function displayInfo(article) {
 			$("#title").text(article.title);
-			$("#author").text(article.author);
-			$("#date").text(` | ${article.date}`);
+			if (article.author === null) {
+				$("#author").text("");
+			} else {
+				$("#author").text(`${article.author} | `);
+			}
+			$("#date").text(article.date);
 			$("#url").attr("href", article.url);
 			$("#articleImg").attr("src", article.image);
 			$("#content").text(article.description);
@@ -153,15 +191,12 @@
 				data: savedArticle,
 				success: function (data) {
 					console.log("Article saved");
-					console.log(savedArticle);
 				}
 			});
 		});
 
-		$("#delete-article").on("click", function () {
-			console.log("Delete button has been pressed");
+		$(document).on("click", "#delete-article", function () {
 			var id = $(this).data("id");
-			console.log(id);
 			// Send the DELETE request.
 			$.ajax("/articles/" + id, {
 				type: "DELETE"
@@ -196,137 +231,234 @@
 			};
 		};
 
+		var newItemInput = $("input.new-item");
+		var goalContainer = $(".goal-container");
 
-
-		// Getting a reference to the input field where user adds a new todo
-		var $newItemInput = $("input.new-item");
-		// Our new todos will go inside the todoContainer
-		var $todoContainer = $(".todo-container");
-		// Adding event listeners for deleting, editing, and adding todos
-		$(document).on("click", "button.delete", deleteTodo);
+		$(document).on("click", "button.delete", deleteGoal);
 		$(document).on("click", "button.complete", toggleComplete);
-		$(document).on("click", ".todo-item", editTodo);
-		$(document).on("keyup", ".todo-item", finishEdit);
-		$(document).on("blur", ".todo-item", cancelEdit);
-		$(document).on("submit", "#todo-form", insertTodo);
+		$(document).on("click", ".goal-item", editGoal);
+		$(document).on("keyup", ".goal-item", finishEdit);
+		$(document).on("blur", ".goal-item", cancelEdit);
+		$(document).on("submit", "#goal-form", insertGoal);
 
-		// Our initial todos array
-		var todos = [];
+		var goals = [];
 
-		// Getting todos from database when page loads
-		getTodos();
+		getGoals();
 
-		// This function resets the todos displayed with new todos from the database
 		function initializeRows() {
-			$todoContainer.empty();
+			goalContainer.empty();
 			var rowsToAdd = [];
-			for (var i = 0; i < todos.length; i++) {
-				rowsToAdd.push(createNewRow(todos[i]));
+			for (var i = 0; i < goals.length; i++) {
+				rowsToAdd.push(createNewRow(goals[i]));
 			}
-			$todoContainer.prepend(rowsToAdd);
+			goalContainer.prepend(rowsToAdd);
 		}
 
-		// This function grabs todos from the database and updates the view
-		function getTodos() {
+		function getGoals() {
 			$.get("/api/goals", function (data) {
-				todos = data;
+				goals = data;
 				initializeRows();
 			});
 		}
 
-		// This function deletes a todo when the user clicks the delete button
-		function deleteTodo(event) {
+		function deleteGoal(event) {
 			event.stopPropagation();
 			var id = $(this).data("id");
 			$.ajax({
 				method: "DELETE",
 				url: "/api/goals/" + id
-			}).then(getTodos);
+			}).then(getGoals);
 		}
 
-		// This function handles showing the input box for a user to edit a todo
-		function editTodo() {
-			var currentTodo = $(this).data("todo");
+		function editGoal() {
+			var currentGoal = $(this).data("goal");
 			$(this).children().hide();
-			$(this).children("input.edit").val(currentTodo.text);
+			$(this).children("input.edit").val(currentGoal.text);
 			$(this).children("input.edit").show();
 			$(this).children("input.edit").focus();
 		}
 
-		// Toggles complete status
 		function toggleComplete(event) {
 			event.stopPropagation();
-			var todo = $(this).parent().data("todo");
-			todo.complete = !todo.complete;
-			updateTodo(todo);
+			var goal = $(this).parent().data("goal");
+			goal.complete = !goal.complete;
+			updateGoal(goal);
 		}
 
-		// This function starts updating a todo in the database if a user hits the "Enter Key"
-		// While in edit mode
 		function finishEdit(event) {
-			var updatedTodo = $(this).data("todo");
+			var updatedGoal = $(this).data("goal");
 			if (event.which === 13) {
-				updatedTodo.text = $(this).children("input").val().trim();
+				updatedGoal.text = $(this).children("input").val().trim();
 				$(this).blur();
-				updateTodo(updatedTodo);
+				updateGoal(updatedGoal);
 			}
 		}
 
-		// This function updates a todo in our database
-		function updateTodo(todo) {
+		function updateGoal(goal) {
 			$.ajax({
 				method: "PUT",
 				url: "/api/goals",
-				data: todo
-			}).then(getTodos);
+				data: goal
+			}).then(getGoals);
 		}
 
-		// This function is called whenever a todo item is in edit mode and loses focus
-		// This cancels any edits being made
 		function cancelEdit() {
-			var currentTodo = $(this).data("todo");
-			if (currentTodo) {
+			var currentGoal = $(this).data("goal");
+			if (currentGoal) {
 				$(this).children().hide();
-				$(this).children("input.edit").val(currentTodo.text);
+				$(this).children("input.edit").val(currentGoal.text);
 				$(this).children("span").show();
 				$(this).children("button").show();
 			}
 		}
 
-		// This function constructs a todo-item row
-		function createNewRow(todo) {
-			var $newInputRow = $(
+		function createNewRow(goal) {
+			var newInputRow = $(
 				[
-					`<li class="list-group-item todo-item">
-					<span>
-					${todo.text}
-					</span>
-					<input type="text" class="edit" style="display: none;">
-					<button class="delete btn btn-danger">x</button>
-					<button class="complete btn btn-primary">✓</button>
-					</li>`
-				].join("")
-			);
+					"<li class='list-group-item goal-item text-left'>",
+					"<span>",
+					goal.text,
+					"</span>",
+					"<input type='text' class='edit' style='display: none;'>",
+					"<button class='float-right complete btn btn-custom-fill pl-3 pr-3 pt-2 pb-2 ml-2'>✓</button>",
+					"<button class='float-right bg-transparent delete btn btn-custom-outline pl-3 pr-3'>X</button>",
+					"</li>"
+				].join(""));
 
-			$newInputRow.find("button.delete").data("id", todo.id);
-			$newInputRow.find("input.edit").css("display", "none");
-			$newInputRow.data("todo", todo);
-			if (todo.complete) {
-				$newInputRow.find("span").css("text-decoration", "line-through");
+			newInputRow.find("button.delete").data("id", goal.id);
+			newInputRow.find("input.edit").css("display", "none");
+			newInputRow.data("goal", goal);
+			if (goal.complete) {
+				newInputRow.find("span").css("text-decoration", "line-through");
 			}
-			return $newInputRow;
+			return newInputRow;
 		}
 
-		// This function inserts a new todo into our database and then updates the view
-		function insertTodo(event) {
+		function insertGoal(event) {
 			event.preventDefault();
-			var todo = {
-				text: $newItemInput.val().trim(),
+			var goal = {
+				text: newItemInput.val().trim(),
 				complete: false,
 				UserId: userId
 			};
 
-			$.post("/api/goals", todo, getTodos);
-			$newItemInput.val("");
+			$.post("/api/goals", goal, getGoals);
+			newItemInput.val("");
+		}
+
+		// Currently Building
+		var newItemInputBuild = $("input.new-item-build");
+		var buildContainer = $(".build-container");
+
+		$(document).on("click", "button.delete-build", deleteBuild);
+		$(document).on("click", "button.complete-build", toggleCompleteBuild);
+		$(document).on("click", ".build-item", editBuild);
+		$(document).on("keyup", ".build-item", finishEditBuild);
+		$(document).on("blur", ".build-item", cancelEditBuild);
+		$(document).on("submit", "#build-form", insertBuild);
+
+		var builds = [];
+
+		getBuilds();
+
+		function initializeRowsBuild() {
+			buildContainer.empty();
+			var rowsToAddBuild = [];
+			for (var i = 0; i < builds.length; i++) {
+				rowsToAddBuild.push(createNewRowBuild(builds[i]));
+			}
+			buildContainer.prepend(rowsToAddBuild);
+		}
+
+		function getBuilds() {
+			$.get("/api/builds", function (data) {
+				builds = data;
+				initializeRowsBuild();
+			});
+		}
+
+		function deleteBuild(event) {
+			event.stopPropagation();
+			var id = $(this).data("id");
+			$.ajax({
+				method: "DELETE",
+				url: "/api/builds/" + id
+			}).then(getBuilds);
+		}
+
+		function editBuild() {
+			var currentBuild = $(this).data("build");
+			$(this).children().hide();
+			$(this).children("input.edit").val(currentBuild.text);
+			$(this).children("input.edit").show();
+			$(this).children("input.edit").focus();
+		}
+
+		function toggleCompleteBuild(event) {
+			event.stopPropagation();
+			var build = $(this).parent().data("build");
+			build.complete = !build.complete;
+			updateBuild(build);
+		}
+
+		function finishEditBuild(event) {
+			var updatedBuild = $(this).data("build");
+			if (event.which === 13) {
+				updatedBuild.text = $(this).children("input").val().trim();
+				$(this).blur();
+				updateBuild(updatedBuild);
+			}
+		}
+
+		function updateBuild(build) {
+			$.ajax({
+				method: "PUT",
+				url: "/api/builds",
+				data: build
+			}).then(getBuilds);
+		}
+
+		function cancelEditBuild() {
+			var currentBuild = $(this).data("build");
+			if (currentBuild) {
+				$(this).children().hide();
+				$(this).children("input.edit").val(currentBuild.text);
+				$(this).children("span").show();
+				$(this).children("button").show();
+			}
+		}
+
+		function createNewRowBuild(build) {
+			var newInputRowBuild = $(
+				[
+					"<li class='list-group-item build-item text-left'>",
+					"<span>",
+					build.text,
+					"</span>",
+					"<input type='text' class='edit' style='display: none;'>",
+					"<button class='float-right complete-build btn btn-custom-fill pl-3 pr-3 pt-2 pb-2 ml-2'>✓</button>",
+					"<button class='float-right bg-transparent delete-build btn btn-custom-outline pl-3 pr-3'>X</button>",
+					"</li>"
+				].join(""));
+
+			newInputRowBuild.find("button.delete-build").data("id", build.id);
+			newInputRowBuild.find("input.edit").css("display", "none");
+			newInputRowBuild.data("build", build);
+			if (build.complete) {
+				newInputRowBuild.find("span").css("text-decoration", "line-through");
+			}
+			return newInputRowBuild;
+		}
+
+		function insertBuild(event) {
+			event.preventDefault();
+			var build = {
+				text: newItemInputBuild.val().trim(),
+				complete: false,
+				UserId: userId
+			};
+
+			$.post("/api/builds", build, getBuilds);
+			newItemInputBuild.val("");
 		}
 	});
