@@ -115,6 +115,46 @@ module.exports = (app, passport) => {
         });
     });
 
+    app.get("/api/next", isLoggedIn, function (req, res) {
+        db.Next.findAll({
+            where: {
+                UserId: req.user.id
+            }
+        }).then(function (dbNext) {
+            res.json(dbNext);
+        });
+    });
+
+    app.post("/api/next", function (req, res) {
+        db.Next.create(req.body).then(function (dbNext) {
+            res.json(dbNext);
+        });
+    });
+
+    app.put("/api/next", function (req, res) {
+        db.Next.update({
+                text: req.body.text,
+                complete: req.body.complete
+            }, {
+                where: {
+                    id: req.body.id
+                }
+            })
+            .then(function (dbNext) {
+                res.json(dbNext);
+            });
+    });
+
+    app.delete("/api/next/:id", function (req, res) {
+        db.Next.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbNext) {
+            res.json(dbNext);
+        });
+    });
+
     app.post("/articles", isLoggedIn, function (req, res) {
         db.Article.create(req.body).then(function (dbarticles) {
             console.log("Saved Article:");

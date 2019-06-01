@@ -461,4 +461,120 @@
 			$.post("/api/builds", build, getBuilds);
 			newItemInputBuild.val("");
 		}
+
+		// Next Steps
+		var newItemInputNext = $("input.new-item-next");
+		var nextContainer = $(".next-container");
+
+		$(document).on("click", "button.delete-next", deleteNext);
+		$(document).on("click", "button.complete-next", toggleCompleteNext);
+		$(document).on("click", ".next-item", editNext);
+		$(document).on("keyup", ".next-item", finishEditNext);
+		$(document).on("blur", ".next-item", cancelEditNext);
+		$(document).on("submit", "#next-form", insertNext);
+
+		var steps = [];
+
+		getNext();
+
+		function initializeRowsNext() {
+			nextContainer.empty();
+			var rowsToAddNext = [];
+			for (var i = 0; i < steps.length; i++) {
+				rowsToAddNext.push(createNewRowNext(steps[i]));
+			}
+			nextContainer.prepend(rowsToAddNext);
+		}
+
+		function getNext() {
+			$.get("/api/next", function (data) {
+				steps = data;
+				initializeRowsNext();
+			});
+		}
+
+		function deleteNext(event) {
+			event.stopPropagation();
+			var id = $(this).data("id");
+			$.ajax({
+				method: "DELETE",
+				url: "/api/next/" + id
+			}).then(getNext);
+		}
+
+		function editNext() {
+			var currentNext = $(this).data("next");
+			$(this).children().hide();
+			$(this).children("input.edit").val(currentNext.text);
+			$(this).children("input.edit").show();
+			$(this).children("input.edit").focus();
+		}
+
+		function toggleCompleteNext(event) {
+			event.stopPropagation();
+			var next = $(this).parent().data("next");
+			next.complete = !next.complete;
+			updateNext(next);
+		}
+
+		function finishEditNext(event) {
+			var updatedNext = $(this).data("next");
+			if (event.which === 13) {
+				updatedNext.text = $(this).children("input").val().trim();
+				$(this).blur();
+				updateNext(updatedNext);
+			}
+		}
+
+		function updateNext(next) {
+			$.ajax({
+				method: "PUT",
+				url: "/api/next",
+				data: next
+			}).then(getNext);
+		}
+
+		function cancelEditNext() {
+			var currentNext = $(this).data("next");
+			if (currentNext) {
+				$(this).children().hide();
+				$(this).children("input.edit").val(currentNext.text);
+				$(this).children("span").show();
+				$(this).children("button").show();
+			}
+		}
+
+		function createNewRowNext(next) {
+			var newInputRowNext = $(
+				[
+					"<li class='list-group-item next-item text-left'>",
+					"<span>",
+					next.text,
+					"</span>",
+					"<input type='text' class='edit' style='display: none;'>",
+					"<button class='float-right complete-next btn btn-custom-fill pl-3 pr-3 pt-2 pb-2 ml-2'>✓</button>",
+					"<button class='float-right bg-transparent delete-next btn btn-custom-outline pl-3 pr-3'>X</button>",
+					"</li>"
+				].join(""));
+
+			newInputRowNext.find("button.delete-next").data("id", next.id);
+			newInputRowNext.find("input.edit").css("display", "none");
+			newInputRowNext.data("next", next);
+			if (next.complete) {
+				newInputRowNext.find("span").css("text-decoration", "line-through");
+			}
+			return newInputRowNext;
+		}
+
+		function insertNext(event) {
+			event.preventDefault();
+			var next = {
+				text: newItemInputNext.val().trim(),
+				complete: false,
+				UserId: userId
+			};
+
+			$.post("/api/next", next, getNext);
+			newItemInputNext.val("");
+		}
 	});
