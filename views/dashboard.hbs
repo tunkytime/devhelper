@@ -1,5 +1,5 @@
-<body class="dashboard-page">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+<body id="dashboard-page">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <span class="navbar-brand">&ltDevHelper/&gt</span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,47 +8,59 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/dashboard">Dashboard<span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="articles" href="/articles">Saved Articles</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="jobs" href="/jobs">Jobs</a>
+                    <a class="nav-link" href="/jobs">Jobs</a>
                 </li>
             </ul>
             <form class="text-right my-2 my-lg-0 ml-auto">
                 <span class="currentUser text-white mr-2" data-id="{{username.id}}">Welcome,
                     {{username.firstname}}</span>
-                <a href="/logout" class="btn btn-outline bg-transparent my-2 my-sm-0">Logout</a>
+                <a href="/logout" class="btn btn-outline-light my-2 my-sm-0">Logout</a>
             </form>
         </div>
     </nav>
 
-    <div class="row container-quote">
-        <div class="col-10 mx-auto mt-3 mb-3 text-center">
-            <h3>Quote of the Day</h3>
-            <p id="quote"></p>
-            - <span id="authorQuote"></span> -
+    <div class="container">
+        <div class="row">
+            <div class="col-10 mt-5 mx-auto">
+                <h2>Quote of the Day</h2>
+                <div class="testimonial-quote group right">
+                    <div>
+                        <blockquote>
+                            <p id="quote"></p>
+                        </blockquote>
+                        <cite class="text-right"><span id="authorQuote"></span>
+                        </cite>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="container shadow-lg p-3 mt-3 mb-3 rounded container-dashboard">
+    <hr>
+    <div class="container p-3 mb-3">
         <div class="row">
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-lg-4 col-md-6">
                 <div class="row">
                     <div class="col">
-                        <div class="card bg-info dailyTerm mt-3">
-                            <div class="card-header text-white">
-                                Term of the Day
+                        <div class="card shadow bg-light dailyTerm mt-3">
+                            <div class="card-header bg-dark text-white">
+                                Knowledge Check
                             </div>
                             <div class="card-body">
                                 <h5 id="term" class="card-title"></h5>
-                                <button class="btn mb-2" type="button" data-toggle="collapse" data-target="#termDefine"
-                                    aria-expanded="false" aria-controls="termDefine">
+                                <button class="btn btn-custom mr-2" type="button" data-toggle="collapse"
+                                    data-target="#termDefine" aria-expanded="false" aria-controls="termDefine">
                                     Definition
                                 </button>
-                                <div class="collapse" id="termDefine">
+                                <button id="nextTerm" class="btn btn-custom-outline bg-transparent">Next Term <i
+                                        class="fas fa-chevron-right"></i></button>
+                                <div class="collapse mt-2" id="termDefine">
                                     <div class="card card-body">
                                     </div>
                                 </div>
@@ -58,17 +70,18 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-12">
-                        <div class="card bg-info intQ">
-                            <div class="card-header text-white">
+                        <div class="card shadow bg-light intQ">
+                            <div class="card-header bg-dark text-white">
                                 Interview Practice </div>
                             <div class="card-body">
                                 <h5 id="intQuestion" class="card-title"></h5>
-                                <button class="btn mb-2" type="button" data-toggle="collapse" data-target="#intAnswer"
-                                    aria-expanded="false" aria-controls="intAnswer">
+                                <button class="btn btn-custom mr-2" type="button" data-toggle="collapse"
+                                    data-target="#intAnswer" aria-expanded="false" aria-controls="intAnswer">
                                     Sample Answer
                                 </button>
-
-                                <div class="collapse" id="intAnswer">
+                                <button id="nextQuestion" class="btn btn-custom-outline bg-transparent">Next Question <i
+                                        class="fas fa-chevron-right"></i></button>
+                                <div class="collapse mt-2" id="intAnswer">
                                     <div class="card card-body">
                                     </div>
                                 </div>
@@ -78,30 +91,21 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-12">
-                        <div class="card bg-info">
-                            <div class="card-header text-white">
-                                Career Opportunities</div>
-                            <div class="card-body">
-                                  <ol>
-                                    {{#each Jobs}}
-                                        <li>
-                                            <img src={{this.image}}>
-                                            <a href="{{url}}">{{this.title}}</a>
-                                            
-                                            <hr>
-                                        </li>
-                                    {{/each}}
-                                    </ol>
-                                <h5 id="careers" class="card-title"></h5>
-                                <button id="getJobs" class="btn mb-2">All</button>
-                                <button  id="frontEnd" class="btn mb-2">Front-End</button>
-                                <button id ="backEnd" class="btn mb-2">Back-End</button>
+                        <div class="card shadow rounded bg-transparent text-dark">
+                            <img class="card-img" src="../images/card-career.jpg" alt="Card image">
+                            <div class="card-img-overlay text-center">
+                                <h5 class="card-title">Career Opportunities</h5>
+                                <div class="buttons text-center">
+                                    <button id="getJobs" class="btn btn-dark mr-1 ml-1">All</button>
+                                    <button class="btn btn-dark mr-1 ml-1">Front-End</button>
+                                    <button class="btn btn-dark mr-1 ml-1">Back-End</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-8 mt-3 container-article">
+            <div class="col-12 col-md-8 mt-3 mb-2 container-article">
                 <h3 class="text-left" id="title"></h3>
                 <div class="row">
                     <div class="col pt-3">
@@ -109,9 +113,9 @@
                         <span id="date"></span>
                     </div>
                     <div class="col text-right mb-2">
-                        <button class="btn" id="prevArt"><i class="fas fa-angle-left"
+                        <button class="btn btn-custom pt-2" id="prevArt"><i class="fas fa-angle-left"
                                 style="font-size: 26px"></i></button>
-                        <button class="btn" id="nextArt"><i class="fas fa-angle-right"
+                        <button class="btn btn-custom pt-2" id="nextArt"><i class="fas fa-angle-right"
                                 style="font-size: 26px"></i></button>
                     </div>
                 </div>
@@ -119,42 +123,78 @@
                     <img id="articleImg" class="rounded" style="object-fit: cover">
                 </div>
                 <p id="content" class="mt-2"></p>
-                <a href="#" id="url" target="_blank" class="btn">Read Full Article</a>
-                <button class="btn" id="save-article"><a href="/articles"></a> Save Article</button>
+                <a href="#" id="url" target="_blank" class="btn btn-custom-outline mr-2">Read Full Article</a>
+                <button class="btn btn-custom" id="save-article"><a href="/articles"></a>Save
+                    Article</button>
             </div>
         </div>
-
-        <div id="goals">
-            <div class="row mt-3 mb-3">
+        <hr>
+        <div id="goals" class="rounded shadow">
+            <div class="row mt-3 mb-2">
                 <div class="col-12">
-                    <h4 class="text-center">My Goals</h4>
-                    <div class="row text-center mb-5">
-                        <div class="col">
-                            <h5>Currently Learning</h5>
-                            <ul class="list-group todo-list">
-                                <li class="list-group-item new-item">
-                                    <form id="todo-form">
-                                        <input class="new-item form-control" placeholder="Add a todo" type="text" />
-                                        <button type="submit" class="btn btn-success">Add Todo</button>
+                    <div class="row text-center mt-3">
+                        <div class="col-12 col-lg-4 col-md-6">
+                            <h5>Currently Learning <i class="fas fa-graduation-cap"></i></h5>
+                            <ul class="list-group goal-list ml-3 mr-3 mb-3">
+                                <li class="bg-transparent shadow-none border-0 list-group-item new-item">
+                                    <form id="goal-form">
+                                        <div class="row">
+                                            <div class="col">
+                                                <input class="new-item form-control float-left"
+                                                    placeholder="Add new topic" type="text" style="width: 75%" />
+                                                <button type="submit" class="btn btn-custom float-right pr-3 pl-3"
+                                                    style="width: auto"><i class="fas fa-plus"></i></button>
+                                            </div>
+                                        </div>
                                     </form>
                                 </li>
-                                <span class="todo-container text-dark">
+                                <span class="goal-container text-dark">
                                 </span>
                             </ul>
                         </div>
-                        <div class="col">
-                            <span>Currently Building</span>
+                        <div class="col-12 col-lg-4 col-md-6">
+                            <h5>Currently Building <i class="fas fa-tools"></i></h5>
+                            <ul class="list-group build-list ml-3 mr-3 mb-3">
+                                <li class="bg-transparent shadow-none border-0 list-group-item new-item">
+                                    <form id="build-form">
+                                        <div class="row">
+                                            <div class="col">
+                                                <input class="new-item-build form-control float-left"
+                                                    placeholder="Add new project" type="text" style="width: 75%" />
+                                                <button type="submit" class="btn btn-custom float-right pr-3 pl-3"
+                                                    style="width: auto"><i class="fas fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </li>
+                                <span class="build-container text-dark">
+                                </span>
+                            </ul>
                         </div>
-                        <div class="col">
-                            <span>What's Next?</span>
+                        <div class="col-12 col-lg-4 col-md-6">
+                            <h5>Next Steps <i class="fas fa-question"></i></h5>
+                            <ul class="list-group next-list ml-3 mr-3 mb-3">
+                                <li class="bg-transparent shadow-none border-0 list-group-item new-item">
+                                    <form id="next-form">
+                                        <div class="row">
+                                            <div class="col">
+                                                <input class="new-item-next form-control float-left"
+                                                    placeholder="Add future goals" type="text" style="width: 75%" />
+                                                <button type="submit" class="btn btn-custom float-right pr-3 pl-3"
+                                                    style="width: auto"><i class="fas fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </li>
+                                <span class="next-container text-dark">
+                                </span>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div id="jobs"></div>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

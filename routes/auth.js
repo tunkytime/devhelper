@@ -1,4 +1,4 @@
-var authController = require("../controllers/authcontroller.js");
+var authController = require("../controllers/authController.js");
 var db = require("../models");
 
 module.exports = (app, passport) => {
@@ -28,10 +28,10 @@ module.exports = (app, passport) => {
                 userId: req.user.id
             }
         }).then(function (dbarticles) {
-            var articleobj = {
-                articles: dbarticles
-            }
-            res.render("articles", articleobj);
+            res.render("articles", {
+                articles: dbarticles,
+                username: req.user
+            });
             console.log("All articles have been retrieved");
             console.log(dbarticles);
         });
@@ -44,6 +44,116 @@ module.exports = (app, passport) => {
             }
         }).then(function (dbGoal) {
             res.json(dbGoal);
+        });
+    });
+
+    app.post("/api/goals", function (req, res) {
+        db.Goal.create(req.body).then(function (dbGoal) {
+            res.json(dbGoal);
+        });
+    });
+
+    app.put("/api/goals", function (req, res) {
+        db.Goal.update({
+                text: req.body.text,
+                complete: req.body.complete
+            }, {
+                where: {
+                    id: req.body.id
+                }
+            })
+            .then(function (dbGoal) {
+                res.json(dbGoal);
+            });
+    });
+
+    app.delete("/api/goals/:id", function (req, res) {
+        db.Goal.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbGoal) {
+            res.json(dbGoal);
+        });
+    });
+
+    app.get("/api/builds", isLoggedIn, function (req, res) {
+        db.Build.findAll({
+            where: {
+                UserId: req.user.id
+            }
+        }).then(function (dbBuild) {
+            res.json(dbBuild);
+        });
+    });
+
+    app.post("/api/builds", function (req, res) {
+        db.Build.create(req.body).then(function (dbBuild) {
+            res.json(dbBuild);
+        });
+    });
+
+    app.put("/api/builds", function (req, res) {
+        db.Build.update({
+                text: req.body.text,
+                complete: req.body.complete
+            }, {
+                where: {
+                    id: req.body.id
+                }
+            })
+            .then(function (dbBuild) {
+                res.json(dbBuild);
+            });
+    });
+
+    app.delete("/api/builds/:id", function (req, res) {
+        db.Build.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbBuild) {
+            res.json(dbBuild);
+        });
+    });
+
+    app.get("/api/next", isLoggedIn, function (req, res) {
+        db.Next.findAll({
+            where: {
+                UserId: req.user.id
+            }
+        }).then(function (dbNext) {
+            res.json(dbNext);
+        });
+    });
+
+    app.post("/api/next", function (req, res) {
+        db.Next.create(req.body).then(function (dbNext) {
+            res.json(dbNext);
+        });
+    });
+
+    app.put("/api/next", function (req, res) {
+        db.Next.update({
+                text: req.body.text,
+                complete: req.body.complete
+            }, {
+                where: {
+                    id: req.body.id
+                }
+            })
+            .then(function (dbNext) {
+                res.json(dbNext);
+            });
+    });
+
+    app.delete("/api/next/:id", function (req, res) {
+        db.Next.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbNext) {
+            res.json(dbNext);
         });
     });
 
