@@ -13,6 +13,8 @@ module.exports = (app, passport) => {
 
     app.get("/dashboard", isLoggedIn, authController.dashboard);
 
+    app.get("/jobs", isLoggedIn, authController.jobs);
+
     app.get("/logout", authController.logout);
 
     app.post("/signin", passport.authenticate("local-signin", {
@@ -30,8 +32,6 @@ module.exports = (app, passport) => {
                 articles: dbarticles,
                 username: req.user
             });
-            console.log("All articles have been retrieved");
-            console.log(dbarticles);
         });
     });
 

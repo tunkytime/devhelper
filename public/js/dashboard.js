@@ -216,9 +216,7 @@
 		<category id="4" name="Front-end Engineering"/>
 		<category id="2" name="Back-end Engineering"/>
 		<category id="5" name="Apps"/>*/
-		$("#getJobs").on("click", function () {
-			getJobs();
-		});
+		getJobs();
 
 		function getArticles(index) {
 			var date = articles[index].publishedAt;
@@ -274,6 +272,10 @@
 			$("#content").text(article.description);
 		};
 
+		function displayJobs(array) {
+
+		}
+
 		$("#save-article").on("click", function () {
 			var savedArticle = {
 				url: articleURL,
@@ -313,8 +315,12 @@
 				dataType: "jsonp",
 				success: (res) => {
 					console.log(res);
-					var listing = res.listings.listing[0];
-					$("#jobs").html(`<p>${listing.title}</p><p>${listing.category.name}</p>`);
+					var res = res.listings.listing
+					for (var i = 0; i < res.length; i++) {
+						var title = $("<h2>").text(res[i].title);
+						var desc = res[i].description;
+						$("#jobsContainer").append(title, desc);
+					}
 				},
 				error: (req, err) => {
 					console.log("Request: " + JSON.stringify(req));

@@ -64,12 +64,18 @@ a:hover {
 /* signin.hbs */
 #signin-page,
 #signup-page,
-#articles-page {
+#articles-page,
+#jobs-page {
     background-color: #BECCCC;
 }
 
-#dashboard-page {
+#dashboard-page,
+#jobs-container {
     background-color: #E9F0F0;
+}
+
+#jobsContainer {
+    color: #222;
 }
 
 /* home.hbs */

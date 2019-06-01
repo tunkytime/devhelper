@@ -14,6 +14,12 @@ exports.dashboard = (req, res) => {
     });
 };
 
+exports.jobs = (req, res) => {
+    res.render("jobs", {
+        username: req.user
+    });
+};
+
 exports.logout = (req, res) => {
     req.session.destroy((err) => {
         res.redirect("/");
