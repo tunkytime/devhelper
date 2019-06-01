@@ -72,7 +72,34 @@
 			"answer": "HyperText Transfer Protocol (HTTP) is an application protocol for distributed, collaborative, hypermedia information systems. HTTP is the foundation of data communication for the World Wide Web. If your browser fetches any file from a web server, it’s using an HTTP request."
 		}
 	];
-	var questions = [];
+
+	var questions = [{
+			"id": 1,
+			"question": "Describe the MVC design pattern.",
+			"answer": "MVC is a software architecture pattern for developing web application. It is handled by three objects Model-View-Controller"
+		},
+		{
+			"id": 2,
+			"question": "What is namespacing in JavaScript?",
+			"answer": "In brief, a namespace is a global object with a unique name that holds methods, properties and other objects. It’s used to increase modularity and reuse of code in web applications, and to prevent naming conflicts."
+		},
+		{
+			"id": 3,
+			"question": "What’s the difference between SOAP and REST?",
+			"answer": "One of the key differences is that SOAP uses XML while REST also supports text, JSON and other formats."
+		},
+		{
+			"id": 4,
+			"question": "What is CORS? How does it work?",
+			"answer": "Cross-origin resource sharing (CORS) is a mechanism that allows many resources (e.g., fonts, JavaScript, etc.) on a web page to be requested from another domain outside the domain from which the resource originated. It’s a mechanism supported in HTML5 that manages XMLHttpRequest access to a domain different."
+		},
+		{
+			"id": 5,
+			"question": "What’s the difference between GET and POST?",
+			"answer": "Both are methods used in HTTP requests. Generally it is said that GET is to download data and PUT is to upload data. But we can do both downloading as well as uploading either by GET/POST."
+		}
+	];
+
 	var articleNum = 0;
 	var termNum = 0;
 	var questionNum = 0;
@@ -116,19 +143,21 @@
 			}
 		});
 
-		$.ajax({
-			url: "/api/questions",
-			type: "GET",
-			success: function (res) {
-				for (var i = 0; i < res.length; i++) {
-					questions.push(res[i]);
-				};
-				getQuestion(questionNum);
-			},
-			error: function (req, err) {
-				console.log("Request: " + JSON.stringify(req));
-			}
-		});
+		// $.ajax({
+		// 	url: "/api/questions",
+		// 	type: "GET",
+		// 	success: function (res) {
+		// 		for (var i = 0; i < res.length; i++) {
+		// 			questions.push(res[i]);
+		// 		};
+		// 		getQuestion(questionNum);
+		// 	},
+		// 	error: function (req, err) {
+		// 		console.log("Request: " + JSON.stringify(req));
+		// 	}
+		// });
+
+		getQuestion(questionNum)
 
 		// $.ajax({
 		// 	url: "/api/terms",
@@ -143,6 +172,7 @@
 		// 		console.log("Request: " + JSON.stringify(req));
 		// 	}
 		// });
+
 		getTerm(termNum)
 
 		$("#nextTerm").on("click", function () {
