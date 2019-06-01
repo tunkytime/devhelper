@@ -15,7 +15,7 @@
                     <a class="nav-link" id="articles" href="/articles">Saved Articles</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#getJobs">Jobs</a>
+                    <a class="nav-link" id="jobs" href="/jobs">Jobs</a>
                 </li>
             </ul>
             <form class="text-right my-2 my-lg-0 ml-auto">
@@ -82,10 +82,20 @@
                             <div class="card-header text-white">
                                 Career Opportunities</div>
                             <div class="card-body">
+                                  <ol>
+                                    {{#each Jobs}}
+                                        <li>
+                                            <img src={{this.image}}>
+                                            <a href="{{url}}">{{this.title}}</a>
+                                            
+                                            <hr>
+                                        </li>
+                                    {{/each}}
+                                    </ol>
                                 <h5 id="careers" class="card-title"></h5>
                                 <button id="getJobs" class="btn mb-2">All</button>
-                                <button class="btn mb-2">Front-End</button>
-                                <button class="btn mb-2">Back-End</button>
+                                <button  id="frontEnd" class="btn mb-2">Front-End</button>
+                                <button id ="backEnd" class="btn mb-2">Back-End</button>
                             </div>
                         </div>
                     </div>

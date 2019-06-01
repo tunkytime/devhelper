@@ -13,6 +13,7 @@
 	var articleURL;
 	var articleImage;
 	var index;
+	var jobs = [];
 
 	var userId = $(".currentUser").data("id");
 
@@ -27,7 +28,7 @@
 			url: baseUrlNews,
 			type: "GET",
 			success: function (res) {
-				console.log(res);
+				//console.log(res);
 				for (var i = 0; i < res.articles.length; i++) {
 					articles.push(res.articles[i]);
 				};
@@ -104,9 +105,6 @@
 		<category id="4" name="Front-end Engineering"/>
 		<category id="2" name="Back-end Engineering"/>
 		<category id="5" name="Apps"/>*/
-		$("#getJobs").on("click", function () {
-			getJobs();
-		});
 
 		function getArticles(index) {
 			var date = articles[index].publishedAt;
@@ -176,29 +174,96 @@
 			);
 		});
 
-		function getJobs() {
-			$.ajax({
-				url: baseUrlJobs,
-				type: "GET",
-				crossDomain: true,
-				dataType: "jsonp",
-				success: (res) => {
-					console.log(res);
-					var listing = res.listings.listing[0];
-					$("#jobs").html(`<p>${listing.title}</p><p>${listing.category.name}</p>`);
-				},
-				error: (req, err) => {
-					console.log("Request: " + JSON.stringify(req));
-				},
-				beforeSend: setHeader
+		
+		$.ajax({
+			url: baseUrlJobs,
+			type: "GET",
+			crossDomain: true,
+			dataType: "jsonp",
+			success: (res) => {
+				jobs = res.listings.listing;
+				console.log(jobs);	
+			},
+			error: (req, err) => {
+				console.log("Request: " + JSON.stringify(req));
+			},
+			beforeSend: setHeader
 			});
 
 			function setHeader(xhr) {
 				xhr.setRequestHeader('Authorization', apiKeyJobs);
 			};
+		
+		$("#getJobs").on("click", function() {
+			// var allJobs;
+			// for (var i = 0; i < jobs.length; i++){
+				
+			// 	allJobs = {
+			// 	title: jobs[i].title,
+			// 	category: jobs[i].category.name,
+			// 	field: jobs[i].type.name,
+			// 	url: jobs[i].apply_url
+			// 	};
+			// 	//console.log(allJobs);
+			// };
+			
+			$.ajax("/jobs/all", {
+				type: "GET",
+				success: function (data) {
+					console.log("GET all jobs")
+				}
+			});
+		});
+
+		$("#frontEnd").on("click", function () {
+			console.log("Front End button has been pressed");
+			$.ajax("/jobs/frontend", {
+				type: "GET"
+			}).then(
+				function () {
+					console.log("Front End Jobs: ");
+					// Reload the page to get the updated list
+					location.reload();
+				}
+			);
+			
+		});
+
+		$("#backEnd").on("click", function () {
+			console.log("Back End button has been pressed");
+			$.ajax("/jobs/backend", {
+				type: "GET"
+			}).then(
+				function () {
+					console.log("Back End Jobs: ");
+					// Reload the page to get the updated list
+					location.reload();
+				}
+			);
+		});
+
+		function allJobs(){
+			var allJobs;
+			for (var i = 0; i < jobs.length; i++){
+				
+				allJobs = {
+				title: jobs[i].title,
+				category: jobs[i].category.name,
+				field: jobs[i].type.name,
+				url: jobs[i].apply_url
+				};
+				console.log(allJobs);
+			};
+			
+			$.ajax("/jobs", {
+				type: "POST",
+				data: allJobs,
+				success: function (data) {
+					console.log("POST All jobs");
+				}
+			});
 		};
-
-
+		allJobs()
 
 		// Getting a reference to the input field where user adds a new todo
 		var $newItemInput = $("input.new-item");

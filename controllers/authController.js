@@ -23,3 +23,7 @@ exports.logout = (req, res) => {
 exports.articles = (req, res) => {
     res.render("articles");
 };
+
+exports.jobs = (req, res) => {
+    res.render("dashboard");
+};

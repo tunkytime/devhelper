@@ -135,4 +135,64 @@ module.exports = (app, passport) => {
         });
       });
 
+      app.get("/jobs/all", function (req, res) {
+        
+        db.Job.findAll({}).then(function (dbJobs) {
+            
+            var jobobj = {
+                Jobs: dbJobs
+            }
+              
+           res.render("dashboard", jobobj);
+            console.log("All jobs have been retrieved");
+            console.log(dbJobs);
+        });
+    });
+
+      app.get("/jobs/frontend", function (req, res) {
+        
+        db.Job.findAll({
+            where: {
+                category: "Front-end Engineering"
+            }
+        }).then(function (dbJobs) {
+            
+            var jobsobj = {
+                Jobs: dbJobs
+            }
+              
+           res.render("dashboard", jobsobj);
+            console.log("All Front End jobs have been retrieved");
+            console.log(dbJobs);
+        });
+    });
+
+    app.get("/jobs/backend", function (req, res) {
+        
+        db.Job.findAll({
+            where: {
+                category: "Back-end Engineering"
+            }
+        }).then(function (dbJobs) {
+            
+            var jobsobj = {
+                Job: dbJobs
+            }
+              
+           res.render("dashboard", jobsobj);
+            console.log("All Back End jobs have been retrieved");
+            console.log(dbJobs);
+            console.log("----------------------------------------");
+        });
+    });
+
+    app.post("/jobs", function(req, res) {
+        
+        db.Job.create(req.body).then(function(dbJobs) {
+         
+          console.log("All Jobs:");
+          console.log(dbJobs)
+        });
+      });
+
 };
