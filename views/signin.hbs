@@ -1,22 +1,24 @@
-<body class="signin-page">
-    <div class="row">
-        <div class="col-md-6 mx-auto">
-            <div class="card mt-5 mx-auto text-dark" style="width: 25rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Sign In</h5>
-                    <div class="card-text">
-                        <form id="signin-form" name="signin" method="post" action="signin">
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input id="email" class="text form-control" name="email" type="text" required />
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input class="form-control" name="password" type="password" required />
-                            </div>
-                            <input class="btn btn-block btn-submit" type="submit" value="Sign In" />
-                            <a href="/" class="btn btn-block btn-cancel bg-transparent">Cancel</a>
-                        </form>
+<body id="signin-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mt-5 mx-auto">
+                <h2 class="text-center text-white">Sign in to &ltDevHelper/&gt</h2>
+                <div class="card mt-3 mx-auto text-dark" style="width: 22rem;">
+                    <div class="card-body">
+                        <div class="card-text">
+                            <form id="signin-form" name="signin" method="post" action="signin">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input id="email" class="text form-control" name="email" type="text" required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input class="form-control" name="password" type="password" required />
+                                </div>
+                                <input class="btn btn-block btn-dark" type="submit" value="Sign In" />
+                                <a href="/" class="btn btn-block btn-light btn-outline-secondary">Cancel</a>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
