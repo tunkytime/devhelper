@@ -3,7 +3,7 @@
 	var apiKeyQuotes = "eLaLSi9Uu337QxcUwX1_sAeF";
 	var baseUrlNews = "https://newsapi.org/v2/top-headlines?q=technology&pageSize=100&apiKey=" + apiKeyNews;
 	var baseUrlJobs = "https://authenticjobs.com/api/?api_key=" + apiKeyJobs + "&method=aj.jobs.search&format=json&categories=3";
-	var baseUrlQuotes = "http://quotes.rest/quote/search.json?category=achieving-dreams&api_key=" + apiKeyQuotes + "&maxlength=160";
+	var baseUrlQuotes = "https://quotes.rest/quote/search.json?category=achieving-dreams&api_key=" + apiKeyQuotes + "&maxlength=160";
 
 	var articles = [];
 	var terms = [];
