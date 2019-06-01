@@ -1,4 +1,4 @@
-var authController = require("../controllers/authcontroller.js");
+var authController = require("../controllers/authController.js");
 var db = require("../models");
 
 module.exports = (app, passport) => {
