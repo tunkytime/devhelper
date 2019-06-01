@@ -10,7 +10,7 @@
     "start": "node server.js",
     "lint": "eslint --quiet .",
     "fix": "eslint --fix .",
-    "test": "cross-env NODE_ENV=test mocha --recursive --reporter spec --exit"
+    "test": "cross-env NODE_ENV=test mocha --recursive --reporter spec --exit",
   },
   "dependencies": {
     "axios": "^0.18.0",
