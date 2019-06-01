@@ -320,8 +320,8 @@
 					goal.text,
 					"</span>",
 					"<input type='text' class='edit' style='display: none;'>",
-					"<button class='float-right complete btn btn-custom-fill pl-3 pr-3 pt-2 pb-2 ml-2'>✓</button>",
-					"<button class='float-right bg-transparent delete btn btn-custom-outline pl-3 pr-3'>X</button>",
+					"<button class='float-right complete btn btn-outline-dark ml-2'><i class='fas fa-check'></i></button>",
+					"<button class='float-right delete btn btn-outline-danger'><i class='fas fa-times'></i></button>",
 					"</li>"
 				].join(""));
 
@@ -436,8 +436,8 @@
 					build.text,
 					"</span>",
 					"<input type='text' class='edit' style='display: none;'>",
-					"<button class='float-right complete-build btn btn-custom-fill pl-3 pr-3 pt-2 pb-2 ml-2'>✓</button>",
-					"<button class='float-right bg-transparent delete-build btn btn-custom-outline pl-3 pr-3'>X</button>",
+					"<button class='float-right complete-build btn btn-outline-dark ml-2'><i class='fas fa-check'></i></button>",
+					"<button class='float-right delete-build btn btn-outline-danger'><i class='fas fa-times'></i></button>",
 					"</li>"
 				].join(""));
 
@@ -552,8 +552,8 @@
 					next.text,
 					"</span>",
 					"<input type='text' class='edit' style='display: none;'>",
-					"<button class='float-right complete-next btn btn-custom-fill pl-3 pr-3 pt-2 pb-2 ml-2'>✓</button>",
-					"<button class='float-right bg-transparent delete-next btn btn-custom-outline pl-3 pr-3'>X</button>",
+					"<button class='float-right complete-next btn btn-outline-dark ml-2'><i class='fas fa-check'></i></button>",
+					"<button class='float-right delete-next btn btn-outline-danger'><i class='fas fa-times'></i></button>",
 					"</li>"
 				].join(""));
 
