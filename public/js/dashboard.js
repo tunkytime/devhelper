@@ -6,7 +6,72 @@
 	var baseUrlQuotes = "https://quotes.rest/quote/search.json?category=achieving-dreams&api_key=" + apiKeyQuotes + "&maxlength=160";
 
 	var articles = [];
-	var terms = [];
+	var terms = [{
+			"id": 1,
+			"term": "AGILE SOFTWARE DEVELOPMENT",
+			"answer": "Agile Software Development is a methodology that calls for keeping code simple, testing often, and delivering small, functional bits of an application when they are ready (called “Sprints”). Expect to focus on building parts of an application rather than delivering one huge application at the end of the project. You may or may not learn Agile Development during a coding bootcamp, but a hiring manager will probably talk about it in interviews if their dev team uses it."
+		},
+		{
+			"id": 2,
+			"term": "AJAX",
+			"answer": "AJAX stands for “Asynchronous JavaScript and XML.” AJAX is not a programming language but a set of web development techniques utilizing many web technologies on the client-side in order to create asynchronous web applications. In a nutshell, Ajax allows for website pages to dynamically change content without needing to reload the entire page."
+		},
+		{
+			"id": 3,
+			"term": "ALGORITHM",
+			"answer": "An algorithm is a set of rules or processes to follow while creating a computer program. Algorithms are the basis for the theory behind most computer programming. For example, how does Google determine which website should appear on their front page of search results? A Search Algorithm! When skeptics talk about coding bootcamps, they usually point out that bootcamp alumni aren’t algorithm aces. Will you learn about algorithms at a coding bootcamp? Sure. Will you know as much as a Computer Science major? Probably not."
+		},
+		{
+			"id": 4,
+			"term": "API",
+			"answer": "An API is an application programming interface with a set of routines, protocols, and tools for building software applications. API’s express software components in terms of their operations, inputs, outputs, and underlying types. For example, you may use a Google Maps API in your bootcamp final project in order to use existing geolocation infrastructure to create specialized maps."
+		},
+		{
+			"id": 5,
+			"term": "BACK-END",
+			"answer": "Backend development refers to the server side of development where the main focus is on how the site works. This usually consists of three parts: a server, an application, and a database. Users can’t see the backend work, but code written by back end developers is what communicates the database information to the browser."
+		},
+		{
+			"id": 6,
+			"term": "BUILD",
+			"answer": "Build, also known as software build or code build, refers to the process by which source code is converted into a stand-alone form that can be run on a computer or the form itself. Builds are created once a certain point in development has been reached or the code is deemed ready for implementation for testing or release."
+		},
+		{
+			"id": 7,
+			"term": "COMPILER",
+			"answer": "A compiler is a set of computer programs that transforms one type of source code written in one language into a difference source code. For example, the compiler called gcc compiles a C program into an executable like Print (“Hello World”). Simply put, a complier is a source code translator."
+		},
+		{
+			"id": 8,
+			"term": "DATA SCIENCE",
+			"answer": "According to NYC Data Science Academy, Data science is a multi-disciplinary field that combines computer science and statistics. The objective of data science is to pull insightful and useful knowledge out of datasets which, at times, can be too large for traditional statistics to analyze. This can include anything from analyzing complex genomic structures, to interpreting handwriting, to optimizing a marketing strategy. Most data science bootcamps require an aptitude for math and statistics, and in some cases knowledge of a programming language, such as R or Python."
+		},
+		{
+			"id": 9,
+			"term": "DEPLOYMENT",
+			"answer": "Software is deployed when all of the activities that make a software system available for use are complete, tested, and ready for users. At a coding bootcamp, you should expect to be deploying to a platform like Heroku. Once code is deployed, it’s available to users."
+		},
+		{
+			"id": 10,
+			"term": "DJANGO",
+			"answer": "A free, open source, web application framework written in Python which follows the model-view-controller (MVC) framework. Expect to learn Django at a coding bootcamp that teaches Python. It’s great for rapid development, along with clean and pragmatic design, and often used in Data Science roles."
+		},
+		{
+			"id": 11,
+			"term": "FRAMEWORK",
+			"answer": "A framework is a reusable, hierarchical directory environment that indicates what kinds of programs can or should be built. Frameworks are similar to static and dynamic libraries called by applications to perform specific tasks. You’ll learn various JavaScript frameworks at a front-end or full stack coding bootcamp including Angular.Js, and React."
+		},
+		{
+			"id": 12,
+			"term": "FRONT-END",
+			"answer": "Front end development refers to “client-side” development, where the focus is on what users see. Front end developers will be engaged in analyzing code, design, and debugging applications along with ensuring a seamless user experience."
+		},
+		{
+			"id": 13,
+			"term": "HTTP REQUEST",
+			"answer": "HyperText Transfer Protocol (HTTP) is an application protocol for distributed, collaborative, hypermedia information systems. HTTP is the foundation of data communication for the World Wide Web. If your browser fetches any file from a web server, it’s using an HTTP request."
+		}
+	];
 	var questions = [];
 	var articleNum = 0;
 	var termNum = 0;
@@ -65,19 +130,20 @@
 			}
 		});
 
-		$.ajax({
-			url: "/api/terms",
-			type: "GET",
-			success: function (res) {
-				for (var i = 0; i < res.length; i++) {
-					terms.push(res[i]);
-				};
-				getTerm(termNum);
-			},
-			error: function (req, err) {
-				console.log("Request: " + JSON.stringify(req));
-			}
-		});
+		// $.ajax({
+		// 	url: "/api/terms",
+		// 	type: "GET",
+		// 	success: function (res) {
+		// 		for (var i = 0; i < res.length; i++) {
+		// 			terms.push(res[i]);
+		// 		};
+		// 		getTerm(termNum);
+		// 	},
+		// 	error: function (req, err) {
+		// 		console.log("Request: " + JSON.stringify(req));
+		// 	}
+		// });
+		getTerm(termNum)
 
 		$("#nextTerm").on("click", function () {
 			if (termNum === (terms.length - 1)) {
