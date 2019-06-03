@@ -8,3 +8,5 @@
   - Practice answering common interview questions
   - Stay informed with relevant industry news and save articles for later
   - Track what you are currently learning, projects your working on, and what you plan to do next
+
+All your information is saved to your account for future access!
