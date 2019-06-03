@@ -9,4 +9,4 @@
   - Stay informed with relevant industry news and save articles for later
   - Track what you are currently learning, projects your working on, and what you plan to do next
 
-### All your information goals and saved articles will be available to you next time you login.
+### All your goals and saved articles will be available to you next time you login.
