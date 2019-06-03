@@ -2,7 +2,7 @@
 ## An app to help aspiring web developers study common indusry terms, interview questions, and stay up to date on current tech news. This app also allows you to create, update, and delete user-specific goals.
 ### Step 1: Create an Account
 ### Step 2: Login
-### Get access to the following:
+### Step 3: Access to the following:
   - Quote of the Day
   - Knowledge check of industry terms
   - Practice answering common interview questions
